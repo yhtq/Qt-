@@ -6,6 +6,8 @@
 #include "QLineEdit"
 #include "QToolBar"
 #include "QAction"
+#include "downloadbar.h"
+#include "QProgressBar"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +22,33 @@ MainWindow::MainWindow(QWidget *parent)
     SetLine();
     SetOtherButtons();
 
+//    DownloadBar* download_bar = new DownloadBar();
+//    download_bar->setParent(this);
+//    download_bar->show();
+
+    // Just for Test
+    QToolButton* dbar = new QToolButton(this);
+    dbar->setGeometry(95,70,690,70);
+    dbar->setStyleSheet("QToolButton{background-color:rgba(191,213,217,50);border-style:inset}");
+
+    QToolButton* btn2 = new QToolButton(dbar);
+    btn2->setGeometry(10,10,300,50);
+    btn2->setStyleSheet("QToolButton{background-color:rgba(191,213,217,0)}");
+    btn2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    btn2->setIcon(QIcon(":/Icons/21021411.jpg"));
+    btn2->setIconSize(QSize(40,40));
+
+    QFont* btn2_font = new QFont;
+    btn2_font->setPointSize(10);
+    btn2_font->setFamily(("黑体"));
+    btn2->setFont(*btn2_font);
+    btn2->setText("    爱你，就多判你一年");
+
+    QProgressBar* progress_bar = new QProgressBar(dbar);
+    progress_bar->setGeometry(480,20,200,30);
+    progress_bar->setMinimum(0);
+    progress_bar->setMaximum(100);
+    progress_bar->setValue(47);
 }
 
 MainWindow::~MainWindow()
@@ -42,17 +71,17 @@ void MainWindow::SetLogin()
 {
     //登录按钮
     user_login = new QToolButton(this);
-    user_login->setGeometry(10, 10, 60, 50);
+    user_login->setGeometry(15, 10, 60, 50);
     user_login->setText("登录");
 
     QFont* user_login_font = new QFont;
-    user_login_font->setPointSize(14);
+    user_login_font->setPointSize(16);
     user_login_font->setFamily(("宋体"));
     user_login->setFont(*user_login_font);
 
-    //    user_login->setStyleSheet("background-color:#FFFFFF");
-    //    user_login->setPopupMode(QToolButton::DelayedPopup);
-    //    user_login->setAutoRaise(user_login);
+    user_login->setStyleSheet("QToolButton{color:rgba(0,154,170,255);background-color:rgba(255,255,255,0)}"
+                              "QToolButton::hover{background-color:rgba(0,0,0,0)}"
+                              "QToolButton::pressed{background-color:rgba(0,0,0,0)}");
 }
 
 void MainWindow::SetLineEdit()
@@ -74,17 +103,18 @@ void MainWindow::SetLineEdit()
 void MainWindow::SetDownLoad()
 {
     //下载按钮
-    download = new QPushButton(this);
+    download = new QToolButton(this);
     download->setGeometry(740, 10, 45, 45);
     download->setIcon(QIcon(":/Icons/download.svg"));
+    download->setIconSize(QSize(30,30));
 
-    download->setStyleSheet("background-color:#FFFFFF");
-//    download->setPopupMode(QToolButton::DelayedPopup);
-//    download->setAutoRaise(download);
+    download->setStyleSheet("QToolButton{background-color:rgba(255,255,255,0)}"
+                            "QToolButton::hover{background-color:rgba(0,0,0,30)}"
+                            "QToolButton::pressed{background-color:rgba(0,0,0,50)}");
 
     path_select = new PathSelect;
 
-    connect(download,&QPushButton::clicked , path_select, [=](){
+    connect(download,&QToolButton::clicked , path_select, [=](){
         path_select->show();
     });
 }
@@ -105,4 +135,9 @@ void MainWindow::SetOtherButtons()
     left_download = new QToolButton(this);
     left_download->setGeometry(15, 70, 65, 65);
     left_download->setIcon(QIcon(":/Icons/download.svg"));
+    left_download->setIconSize(QSize(40,40));
+
+    left_download->setStyleSheet("QToolButton{background-color:rgba(255,255,255,0)}"
+                                 "QToolButton::hover{background-color:rgba(0,0,0,50)}"
+                                 "QToolButton::pressed{background-color:rgba(0,0,0,50)}");
 }

@@ -7,6 +7,7 @@
 #include "QLineEdit"
 #include "QToolBar"
 #include "pathselect.h"
+#include "QProgressBar"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,7 +25,7 @@ public:
 
     QToolButton* user_login;
     QLineEdit* line_edit;
-    QPushButton* download;
+    QToolButton* download;
     QFrame *line;
     QToolButton* left_download;
 
@@ -35,6 +36,10 @@ public:
     void SetOtherButtons();
 
     PathSelect* path_select;
+
+    class DownloadBar : public QFrame{
+
+    };
 
 private:
     Ui::MainWindow *ui;
