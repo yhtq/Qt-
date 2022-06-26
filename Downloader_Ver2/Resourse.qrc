@@ -4,10 +4,11 @@
         <file>Icon/MainWidget/SideBar/icon_set.png</file>
         <file>Icon/MainWidget/Top/logo_icon.png</file>
         <file>Icon/MainWidget/Top/search_bar_icon.png</file>
-        <file>Icon/MainWidget/Top/right_.png</file>
         <file>Icon/MainWidget/SideBar/icon2.png</file>
         <file>Icon/MainWidget/SideBar/icon_.png</file>
         <file>Icon/MainWidget/Cell/ele_icon.png</file>
-        <file>Icon/MainWidget/_icon.png</file>
+        <file>Icon/logo_.png</file>
+        <file>Icon/MainWidget/Top/minimize.png</file>
+        <file>Icon/MainWidget/Top/close.png</file>
     </qresource>
 </RCC>
