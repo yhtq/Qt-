@@ -6,6 +6,7 @@
 #include "toolwidget.h"
 #include "line_edit.h"
 #include "QDebug"
+#include "QPushButton"
 #include "QToolButton"
 
 MainWidget::MainWidget(QWidget *parent)
@@ -42,10 +43,10 @@ void MainWidget::Init_Top()
 {
     top = new QWidget(this);
     top->setGeometry(1,1,1078,40);
-    top->setStyleSheet("background:rgb(135,255,255)");
+    top->setStyleSheet("background:rgb(191,244,248)");
 
     //登录按钮
-    QToolButton *logo = new QToolButton(top);
+    QPushButton *logo = new QPushButton(top);
     logo->setGeometry(20,10,24,20);
     logo->setIcon(QIcon(":/Icon/MainWidget/Top/logo_icon.png"));
     logo->setStyleSheet("border:0px");
@@ -74,18 +75,18 @@ void MainWidget::Init_Top()
     QWidget *widget_control = new QWidget(top);
     widget_control->setGeometry(920,0,160,40);
     widget_control->setStyleSheet("background:rgb(235,235,235)");
-    QToolButton *widget_minimize = new QToolButton(widget_control);
+    QPushButton *widget_minimize = new QPushButton(widget_control);
     widget_minimize->setGeometry(0,0,80,40);
     widget_minimize->setIcon(QIcon(":/Icon/MainWidget/Top/minimize.png"));
-    widget_minimize->setStyleSheet("QToolButton{background:rgb(255,255,255);border:0px}"
-                                   "QToolButton:hover{background:rgb(245,245,245);border:0px}"
-                                   "QToolButton:pressed{background:rgb(235,235,235);border:0px}");
-    QToolButton *widget_close = new QToolButton(widget_control);
+    widget_minimize->setStyleSheet("QPushButton{background:rgb(255,255,255);border:0px}"
+                                   "QPushButton:hover{background:rgb(245,245,245);border:0px}"
+                                   "QPushButton:pressed{background:rgb(235,235,235);border:0px}");
+    QPushButton *widget_close = new QPushButton(widget_control);
     widget_close->setGeometry(80,0,80,40);
     widget_close->setIcon(QIcon(":/Icon/MainWidget/Top/close.png"));
-    widget_close->setStyleSheet("QToolButton{background:rgb(255,255,255);border:0px}"
-                                "QToolButton:hover{background:rgb(245,245,245);border:0px}"
-                                "QToolButton:pressed{background:rgb(235,235,235);border:0px}");
+    widget_close->setStyleSheet("QPushButton{background:rgb(255,255,255);border:0px}"
+                                "QPushButton:hover{background:rgb(245,245,245);border:0px}"
+                                "QPushButton:pressed{background:rgb(235,235,235);border:0px}");
 }
 
 void MainWidget::Init_SideBar()
@@ -98,9 +99,9 @@ void MainWidget::Init_SideBar()
     divider->setGeometry(6,88,197,1);
     divider->setStyleSheet("background:rgb(229,229,229)");
 
-    QWidget *btn1 = new QWidget(sideBar);
+    ToolWidget *btn1 = new ToolWidget(sideBar);
     btn1->setGeometry(0,0,209,40);
-    btn1->setStyleSheet("background:rgb(255,255,255)");
+    btn1->setStyleSheet("background:rgb(237,247,255)");
     QFrame *icon1 = new QFrame(btn1);
     icon1->setGeometry(16,10,20,20);
     icon1->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon1.png)");
@@ -111,7 +112,7 @@ void MainWidget::Init_SideBar()
                          "font-family: 微软雅黑;font-size: 14px;font-weight: 450;"
                          "line-height: 20px;text-align: left");
 
-    QWidget *btn2 = new QWidget(sideBar);
+    ToolWidget *btn2 = new ToolWidget(sideBar);
     btn2->setGeometry(0,40,209,40);
     btn2->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon2 = new QFrame(btn2);
@@ -124,20 +125,32 @@ void MainWidget::Init_SideBar()
                          "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
                          "line-height: 20px;text-align: left");
 
-    QWidget *btn_ = new QWidget(sideBar);
-    btn_->setGeometry(0,97,209,40);
-    btn_->setStyleSheet("background:rgb(255,255,255)");
-    QFrame *icon_ = new QFrame(btn_);
-    icon_->setGeometry(16,10,20,20);
-    icon_->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon_.png)");
-    QLabel *text_ = new QLabel(btn_);
-    text_->setGeometry(44,10,110,20);
-    text_->setText(QString("帮助"));
-    text_->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
+    connect(btn1,&ToolWidget::Widget_clicked,btn1,[=]{
+        btn1->setStyleSheet("background:rgb(237,247,255)");
+        btn2->setStyleSheet("background:rgb(255,255,255)");
+    });
+    connect(btn2,&ToolWidget::Widget_clicked,btn2,[=]{
+        btn1->setStyleSheet("background:rgb(255,255,255)");
+        btn2->setStyleSheet("background:rgb(237,247,255)");
+    });
+
+    ToolWidget *btn_help = new ToolWidget(sideBar);
+    btn_help->setGeometry(0,97,209,40);
+    btn_help->setStyleSheet("background:rgb(255,255,255)");
+    QFrame *icon_help = new QFrame(btn_help);
+    icon_help->setGeometry(16,10,20,20);
+    icon_help->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon_.png)");
+    QLabel *text_help = new QLabel(btn_help);
+    text_help->setGeometry(44,10,110,20);
+    text_help->setText(QString("帮助"));
+    text_help->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
                          "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
                          "line-height: 20px;text-align: left");
+    connect(btn_help,&ToolWidget::Widget_clicked,btn_help,[=]{
+        btn_help->setStyleSheet("background:rgb(245,245,245)");
+    });
 
-    QWidget *btn_set = new QWidget(sideBar);
+    ToolWidget *btn_set = new ToolWidget(sideBar);
     btn_set->setGeometry(0,137,209,40);
     btn_set->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon_set = new QFrame(btn_set);
@@ -149,6 +162,9 @@ void MainWidget::Init_SideBar()
     text_set->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
                             "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
                             "line-height: 20px;text-align: left");
+    connect(btn_set,&ToolWidget::Widget_clicked,btn_set,[=]{
+        btn_set->setStyleSheet("background:rgb(245,245,245)");
+    });
 }
 
 void MainWidget::Init_SearchBar()

@@ -15,6 +15,11 @@ void ToolWidget::mousePressEvent(QMouseEvent *event)
     }
 }
 
+//void mouseMoveEvent(QMouseEvent *event)
+//{
+//    ;
+//}
+
 void ToolWidget::mouseReleaseEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
