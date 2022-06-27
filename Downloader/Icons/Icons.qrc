@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/Icons">
+        <file>about.svg</file>
+        <file>akkarin.png</file>
+        <file>download.svg</file>
+        <file>folder.svg</file>
+        <file>icon-96x96.png</file>
+        <file>logout.svg</file>
+        <file>manga.svg</file>
+        <file>refresh.png</file>
+        <file>remove.svg</file>
+        <file>video.svg</file>
+        <file>21021411.jpg</file>
+    </qresource>
+</RCC>
