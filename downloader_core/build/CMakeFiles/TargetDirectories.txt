@@ -1,0 +1,4 @@
+E:/code/Qt/downloader_new/build/CMakeFiles/downloader_new.dir
+E:/code/Qt/downloader_new/build/CMakeFiles/edit_cache.dir
+E:/code/Qt/downloader_new/build/CMakeFiles/rebuild_cache.dir
+E:/code/Qt/downloader_new/build/CMakeFiles/downloader_new_autogen.dir
