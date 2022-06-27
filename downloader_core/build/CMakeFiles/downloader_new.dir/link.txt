@@ -1,3 +1,0 @@
-E:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\downloader_new.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\downloader_new.dir/objects.a @CMakeFiles\downloader_new.dir\objects1.rsp
-C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe -g -Wl,--whole-archive CMakeFiles\downloader_new.dir/objects.a -Wl,--no-whole-archive -o downloader_new.exe -Wl,--out-implib,libdownloader_new.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\downloader_new.dir\linklibs.rsp
