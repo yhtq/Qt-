@@ -22,7 +22,8 @@ SOURCES += \
     logindialog.cpp \
     main.cpp \
     mainwidget.cpp \
-    toolwidget.cpp
+    toolwidget.cpp \
+    progressbar.cpp
 
 HEADERS += \
     closedialog.h \
@@ -30,7 +31,8 @@ HEADERS += \
     line_edit.h \
     logindialog.h \
     mainwidget.h \
-    toolwidget.h
+    toolwidget.h \
+    progressbar.h
 
 FORMS += \
     mainwidget.ui

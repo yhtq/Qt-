@@ -10,5 +10,6 @@
         <file>Icon/logo_.png</file>
         <file>Icon/MainWidget/Top/minimize.png</file>
         <file>Icon/MainWidget/Top/close.png</file>
+        <file>Icon/MainWidget/Cell/ele_progress_bar.bmp</file>
     </qresource>
 </RCC>

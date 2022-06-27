@@ -1,4 +1,5 @@
 #include "mainwidget.h"
+#include "progressbar.h"
 #include "ui_mainwidget.h"
 
 MainWidget::MainWidget(QWidget *parent)
@@ -249,6 +250,9 @@ void MainWidget::Init_ChildWidget1()
     ele_extra_text->setStyleSheet("position: absolute;color: rgb(140, 140, 140);"
                                   "font-family: 微软雅黑;font-size: 12px;font-weight: 400;"
                                   "line-height: 20px;text-align: left");
+    // 下载条相关
+    ProgressBar *ele_progress_bar = new ProgressBar(":/Icon/MainWidget/Cell/ele_progress_bar.bmp", ele);
+    ele_progress_bar -> setGeometry(300, 0, 420, 35);
 }
 
 void MainWidget::Init_ChildWidget2()
