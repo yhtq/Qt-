@@ -16,13 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    closedialog.cpp \
+    helpdialog.cpp \
     line_edit.cpp \
+    logindialog.cpp \
     main.cpp \
     mainwidget.cpp \
     toolwidget.cpp
 
 HEADERS += \
+    closedialog.h \
+    helpdialog.h \
     line_edit.h \
+    logindialog.h \
     mainwidget.h \
     toolwidget.h
 

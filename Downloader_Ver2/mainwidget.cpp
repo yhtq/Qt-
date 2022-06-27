@@ -1,14 +1,5 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
-#include "QMouseEvent"
-#include "QFrame"
-#include "QLabel"
-#include "toolwidget.h"
-#include "line_edit.h"
-#include "QDebug"
-#include "QPushButton"
-#include "QToolButton"
-#include "QDebug"
 
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
@@ -20,8 +11,9 @@ MainWidget::MainWidget(QWidget *parent)
     Init_Widget();
     Init_Top();
     Init_SideBar();
-    Init_SearchBar();
-    Init_Cell();
+    Init_ChildWidget1();
+    Init_ChildWidget2();
+    childWidget2->close();
 
     //分割线
     QWidget *divider = new QWidget(this);
@@ -41,7 +33,6 @@ void MainWidget::Init_Widget()
 
     this->resize(1080,720);
     this->setStyleSheet(".MainWidget{background:rgb(255,255,255);border:1px solid rgb(200,200,200)}");
-
 }
 
 void MainWidget::Init_Top()
@@ -62,21 +53,13 @@ void MainWidget::Init_Top()
     title->setStyleSheet("position: absolute;color: rgb(60, 60, 60);"
                          "font-family: 微软雅黑;font-size: 16px;font-weight: 480;"
                          "line-height: 24px;text-align: left");
+    connect(logo,&QPushButton::clicked,logo,[=]{
+        LoginDialog *log = new LoginDialog;
+        log->exec();
+    });
 
-    //Line_Edit *search_bar = new Line_Edit(top,400,4);
-//    QWidget *search_bar = new QWidget(top);
-//    search_bar->setGeometry(400,4,280,32);
-//    search_bar->setStyleSheet("background: rgb(247, 247, 247);border-radius: 16px;");
-//    QFrame *search_bar_icon = new QFrame(search_bar);
-//    search_bar_icon->setGeometry(92,6,20,20);
-//    search_bar_icon->setStyleSheet("background-image:url(:/Icon/MainWidget/Top/search_bar_icon.png)");
-//    QLabel *search_bar_text = new QLabel(search_bar);
-//    search_bar_text->setGeometry(120,6,56,20);
-//    search_bar_text->setText(QString("搜索名称"));
-//    search_bar_text->setStyleSheet("position: absolute;color: rgb(191, 191, 191);"
-//                                   "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
-//                                   "line-height: 20px;text-align: left");
 
+    //最小化和关闭按钮
     QWidget *widget_control = new QWidget(top);
     widget_control->setGeometry(920,0,160,40);
     widget_control->setStyleSheet("background:rgb(235,235,235)");
@@ -86,20 +69,31 @@ void MainWidget::Init_Top()
     widget_minimize->setStyleSheet("QPushButton{background:rgb(255,255,255);border:0px}"
                                    "QPushButton:hover{background:rgb(245,245,245);border:0px}"
                                    "QPushButton:pressed{background:rgb(235,235,235);border:0px}");
+    connect(widget_minimize,&QPushButton::clicked,widget_minimize,[=]{
+       this->showMinimized();
+    });
+
     QPushButton *widget_close = new QPushButton(widget_control);
     widget_close->setGeometry(80,0,80,40);
     widget_close->setIcon(QIcon(":/Icon/MainWidget/Top/close.png"));
     widget_close->setStyleSheet("QPushButton{background:rgb(255,255,255);border:0px}"
                                 "QPushButton:hover{background:rgb(245,245,245);border:0px}"
                                 "QPushButton:pressed{background:rgb(235,235,235);border:0px}");
+    connect(widget_close,&QPushButton::clicked,widget_close,[=]{
+
+        CloseDialog *log = new CloseDialog;
+        int opt = log->exec();
+        if(opt == QDialog::Accepted) this->close();
+    });
 }
 
 void MainWidget::Init_SideBar()
 {
     //侧栏
     sideBar = new QWidget(this);
-    sideBar->setGeometry(22,88,209,257);
-    sideBar->setStyleSheet("background:rgb(255,255,255)");
+    sideBar->setObjectName("sideBar");
+    sideBar->setGeometry(21,87,211,259);
+    sideBar->setStyleSheet("#sideBar{background:rgb(255,255,255);border:1px solid rgb(235,235,235)}");
 
     //分割线
     QWidget *divider = new QWidget(sideBar);
@@ -108,7 +102,7 @@ void MainWidget::Init_SideBar()
 
     //按钮选项
     ToolWidget *btn1 = new ToolWidget(sideBar);
-    btn1->setGeometry(0,0,209,40);
+    btn1->setGeometry(1,1,209,40);
     btn1->setStyleSheet("background:rgb(237,247,255)");
     QFrame *icon1 = new QFrame(btn1);
     icon1->setGeometry(16,10,20,20);
@@ -121,7 +115,7 @@ void MainWidget::Init_SideBar()
                          "line-height: 20px;text-align: left");
 
     ToolWidget *btn2 = new ToolWidget(sideBar);
-    btn2->setGeometry(0,40,209,40);
+    btn2->setGeometry(1,41,209,40);
     btn2->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon2 = new QFrame(btn2);
     icon2->setGeometry(16,10,20,20);
@@ -136,15 +130,21 @@ void MainWidget::Init_SideBar()
     connect(btn1,&ToolWidget::Widget_mouseReleased,btn1,[=]{
         btn1->setStyleSheet("background:rgb(237,247,255)");
         btn2->setStyleSheet("background:rgb(255,255,255)");
+
+        childWidget2->close();
+        childWidget1->show();
     });
     connect(btn2,&ToolWidget::Widget_mouseReleased,btn2,[=]{
         btn1->setStyleSheet("background:rgb(255,255,255)");
         btn2->setStyleSheet("background:rgb(237,247,255)");
+
+        childWidget1->close();
+        childWidget2->show();
     });
 
     //Help Button
     ToolWidget *btn_help = new ToolWidget(sideBar);
-    btn_help->setGeometry(0,97,209,40);
+    btn_help->setGeometry(1,98,209,40);
     btn_help->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon_help = new QFrame(btn_help);
     icon_help->setGeometry(16,10,20,20);
@@ -171,10 +171,16 @@ void MainWidget::Init_SideBar()
     connect(btn_help,&ToolWidget::Widget_mouseReleased,btn_help,[=]{
         btn_help->setStyleSheet("background:rgb(245,245,245)");
     });
+    //Eject the Dialog
+    connect(btn_help,&ToolWidget::Widget_mouseReleased,this,[=]{
+        HelpDialog *help = new HelpDialog;
+        help->show();
+        help->exec();
+    });
 
     //Setting Button
     ToolWidget *btn_set = new ToolWidget(sideBar);
-    btn_set->setGeometry(0,137,209,40);
+    btn_set->setGeometry(1,138,209,40);
     btn_set->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon_set = new QFrame(btn_set);
     icon_set->setGeometry(16,10,20,20);
@@ -203,37 +209,39 @@ void MainWidget::Init_SideBar()
     });
 }
 
-void MainWidget::Init_SearchBar()
+void MainWidget::Init_ChildWidget1()
 {
-    QWidget *bar = new QWidget(this);
-    bar->setGeometry(256,88,812,80);
+    childWidget1 = new QWidget(this);
+    childWidget1->setGeometry(256,88,802,506);
+
+    //SearchBar
+    QWidget *bar = new QWidget(childWidget1);
+    bar->setGeometry(0,0,802,80);
     bar->setStyleSheet("background:rgb(255,255,255)");
 
-    Line_Edit *search_bar = new Line_Edit(bar,0,4);
-}
+    Line_Edit *search_bar = new Line_Edit(bar,30,4);
 
-void MainWidget::Init_Cell()
-{
-    cell = new QWidget(this);
-    cell->setGeometry(256,188,812,426);
+    //Cell
+    QWidget *cell = new QWidget(childWidget1);
+    cell->setGeometry(0,100,802,426);
     cell->setStyleSheet("background:rgb(255,255,255)");
 
     QWidget *ele = new QWidget(cell);
-    ele->setGeometry(0,0,812,49);
+    ele->setGeometry(0,0,802,49);
     QWidget *ele_divider = new QWidget(ele);
-    ele_divider->setGeometry(49,48,763,1);
+    ele_divider->setGeometry(49,48,753,1);
     ele_divider->setStyleSheet("background:rgb(229,229,229)");
     QFrame *ele_icon = new QFrame(ele);
     ele_icon->setGeometry(0,0,40,40);
     ele_icon->setStyleSheet("background-image:url(:/Icon/MainWidget/Cell/ele_icon.png)");
     QLabel *ele_text = new QLabel(ele);
-    ele_text->setGeometry(52,10,177,14);
+    ele_text->setGeometry(52,10,167,14);
     ele_text->setText(QString("Download_task1"));
     ele_text->setStyleSheet("position: absolute;color: rgb(38, 38, 38);"
                             "font-family: 微软雅黑;font-size: 14px;font-weight: 500;"
                             "line-height: 20px;text-align: left");
     QWidget *ele_extra = new QWidget(ele);
-    ele_extra->setGeometry(742,5,60,22);
+    ele_extra->setGeometry(732,5,60,22);
     ele_extra->setStyleSheet(".QWidget{border: 1px solid rgb(229, 229, 229);border-radius: 4px;}");
     QLabel *ele_extra_text = new QLabel(ele_extra);
     ele_extra_text->setGeometry(7,1,50,20);
@@ -241,7 +249,13 @@ void MainWidget::Init_Cell()
     ele_extra_text->setStyleSheet("position: absolute;color: rgb(140, 140, 140);"
                                   "font-family: 微软雅黑;font-size: 12px;font-weight: 400;"
                                   "line-height: 20px;text-align: left");
+}
 
+void MainWidget::Init_ChildWidget2()
+{
+    childWidget2 = new QWidget(this);
+    childWidget2->setGeometry(256,88,802,506);
+    childWidget2->setStyleSheet("background:rgb(230,230,230)");
 }
 
 //copy from https://www.cnblogs.com/MakeView660/p/10619334.html#:~:text=%E6%88%91%E4%BB%AC%E7%9F%A5%E9%81%93%EF%BC%8C%E8%A6%81%E5%AE%9E%E7%8E%B0,veEvent%E3%80%82

@@ -2,6 +2,17 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
+#include "QMouseEvent"
+#include "QFrame"
+#include "QLabel"
+#include "toolwidget.h"
+#include "line_edit.h"
+#include "QPushButton"
+#include "QToolButton"
+#include "closedialog.h"
+#include "logindialog.h"
+#include "helpdialog.h"
+#include "QDebug"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -19,8 +30,8 @@ public:
     void Init_Widget();
     void Init_Top();
     void Init_SideBar();
-    void Init_SearchBar();
-    void Init_Cell();
+    void Init_ChildWidget1();
+    void Init_ChildWidget2();
 
 protected:
     //拖拽窗口
@@ -35,6 +46,7 @@ private:
     QPoint mouseStartPoint;
     QPoint windowTopLeftPoint;
 
-    QWidget *top, *sideBar, *cell;
+    QWidget *childWidget1, *childWidget2;
+    QWidget *top, *sideBar;
 };
 #endif //  MAINWIDGET_H

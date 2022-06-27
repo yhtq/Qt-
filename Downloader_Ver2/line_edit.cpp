@@ -32,23 +32,6 @@ void Line_Edit::init()
     down_load->setStyleSheet("QPushButton{background: rgb(255, 255, 255);background-image:url(:/Icon/logo_.png);border-radius: 16px;}"
                              "QPushButton:hover{background: rgb(240, 240, 240);background-image:url(:/Icon/logo_.png)}"
                              "QPushButton:pressed{background: rgb(230, 230, 230);background-image:url(:/Icon/logo_.png)}");
-
-//    connect(down_load,&QPushButton::clicked,line_edit,[=]{
-//        QString s = line_edit->text();
-//        qDebug() << s;
-//    });
-
-
-
-//    QFrame *search_bar_icon = new QFrame(search_bar);
-//    search_bar_icon->setGeometry(92,6,20,20);
-//    search_bar_icon->setStyleSheet("background-image:url(:/Icon/MainWidget/Top/search_bar_icon.png)");
-//    QLabel *search_bar_text = new QLabel(search_bar);
-//    search_bar_text->setGeometry(120,6,56,20);
-//    search_bar_text->setText(QString("搜索名称"));
-//    search_bar_text->setStyleSheet("position: absolute;color: rgb(191, 191, 191);"
-//                                   "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
-//                                   "line-height: 20px;text-align: left");
 }
 
 void Line_Edit::setPos(int PX_,int PY_)
