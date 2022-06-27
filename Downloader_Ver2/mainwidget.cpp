@@ -8,6 +8,7 @@
 #include "QDebug"
 #include "QPushButton"
 #include "QToolButton"
+#include "QDebug"
 
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
@@ -22,6 +23,10 @@ MainWidget::MainWidget(QWidget *parent)
     Init_SearchBar();
     Init_Cell();
 
+    //分割线
+    QWidget *divider = new QWidget(this);
+    divider->setGeometry(1,41,1078,1);
+    divider->setStyleSheet("background:rgb(245,245,245)");
 }
 
 MainWidget::~MainWidget()
@@ -91,14 +96,17 @@ void MainWidget::Init_Top()
 
 void MainWidget::Init_SideBar()
 {
+    //侧栏
     sideBar = new QWidget(this);
     sideBar->setGeometry(22,88,209,257);
     sideBar->setStyleSheet("background:rgb(255,255,255)");
 
+    //分割线
     QWidget *divider = new QWidget(sideBar);
     divider->setGeometry(6,88,197,1);
     divider->setStyleSheet("background:rgb(229,229,229)");
 
+    //按钮选项
     ToolWidget *btn1 = new ToolWidget(sideBar);
     btn1->setGeometry(0,0,209,40);
     btn1->setStyleSheet("background:rgb(237,247,255)");
@@ -125,15 +133,16 @@ void MainWidget::Init_SideBar()
                          "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
                          "line-height: 20px;text-align: left");
 
-    connect(btn1,&ToolWidget::Widget_clicked,btn1,[=]{
+    connect(btn1,&ToolWidget::Widget_mouseReleased,btn1,[=]{
         btn1->setStyleSheet("background:rgb(237,247,255)");
         btn2->setStyleSheet("background:rgb(255,255,255)");
     });
-    connect(btn2,&ToolWidget::Widget_clicked,btn2,[=]{
+    connect(btn2,&ToolWidget::Widget_mouseReleased,btn2,[=]{
         btn1->setStyleSheet("background:rgb(255,255,255)");
         btn2->setStyleSheet("background:rgb(237,247,255)");
     });
 
+    //Help Button
     ToolWidget *btn_help = new ToolWidget(sideBar);
     btn_help->setGeometry(0,97,209,40);
     btn_help->setStyleSheet("background:rgb(255,255,255)");
@@ -146,10 +155,24 @@ void MainWidget::Init_SideBar()
     text_help->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
                          "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
                          "line-height: 20px;text-align: left");
-    connect(btn_help,&ToolWidget::Widget_clicked,btn_help,[=]{
+    //HoverEnter Event
+    connect(btn_help,&ToolWidget::hoverEnter,btn_help,[=]{
+        btn_help->setStyleSheet("background:rgb(245,245,245)");
+    });
+    //HoverLeave Event
+    connect(btn_help,&ToolWidget::hoverLeave,btn_help,[=]{
+        btn_help->setStyleSheet("background:rgb(255,255,255)");
+    });
+    //Pressed Event
+    connect(btn_help,&ToolWidget::Widget_mousePressed,btn_help,[=]{
+        btn_help->setStyleSheet("background:rgb(235,235,235)");
+    });
+    //Released Event
+    connect(btn_help,&ToolWidget::Widget_mouseReleased,btn_help,[=]{
         btn_help->setStyleSheet("background:rgb(245,245,245)");
     });
 
+    //Setting Button
     ToolWidget *btn_set = new ToolWidget(sideBar);
     btn_set->setGeometry(0,137,209,40);
     btn_set->setStyleSheet("background:rgb(255,255,255)");
@@ -162,7 +185,20 @@ void MainWidget::Init_SideBar()
     text_set->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
                             "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
                             "line-height: 20px;text-align: left");
-    connect(btn_set,&ToolWidget::Widget_clicked,btn_set,[=]{
+    //HoverEnter Event
+    connect(btn_set,&ToolWidget::hoverEnter,btn_set,[=]{
+        btn_set->setStyleSheet("background:rgb(245,245,245)");
+    });
+    //HoverLeave Event
+    connect(btn_set,&ToolWidget::hoverLeave,btn_set,[=]{
+        btn_set->setStyleSheet("background:rgb(255,255,255)");
+    });
+    //Pressed Event
+    connect(btn_set,&ToolWidget::Widget_mousePressed,btn_set,[=]{
+        btn_set->setStyleSheet("background:rgb(235,235,235)");
+    });
+    //Released Event
+    connect(btn_set,&ToolWidget::Widget_mouseReleased,btn_set,[=]{
         btn_set->setStyleSheet("background:rgb(245,245,245)");
     });
 }

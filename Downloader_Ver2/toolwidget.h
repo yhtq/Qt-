@@ -12,14 +12,19 @@ public:
 
 signals:
     void Widget_clicked();
-    void hover();
+    void hoverEnter();
+    void hoverLeave();
+    void Widget_mousePressed();
+    void Widget_mouseReleased();
 
 protected:
     void mousePressEvent(QMouseEvent *event);
-    //void mouseMoveEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 
 private:
+    bool eventFilter(QObject *object, QEvent *event);
+
     bool m_bDrag;
 
     QPoint mouseStartPoint;
