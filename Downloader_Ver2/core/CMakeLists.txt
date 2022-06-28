@@ -16,6 +16,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Network)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
+find_package(Qt6 REQUIRED COMPONENTS Concurrent)
 aux_source_directory(. DIR_SRCS)
 add_executable(downloader_new
   ${DIR_SRCS}
@@ -24,3 +25,4 @@ target_link_libraries(downloader_new Qt6::Core5Compat)
 target_link_libraries(downloader_new Qt6::Widgets)
 target_link_libraries(downloader_new Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(downloader_new Qt${QT_VERSION_MAJOR}::Network)
+target_link_libraries(downloader_new Qt6::Concurrent)

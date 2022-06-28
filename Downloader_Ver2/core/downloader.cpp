@@ -8,6 +8,10 @@ Downloader::Downloader(const QString& bvid, const QString& file_path)
     this->bvid = bvid;
     this->file_path = file_path;
 }
+long long Downloader::getSize() const
+{
+    return size;
+}
 void Downloader::download_cover(const QString& cover_path) const
 {
     //TODO
@@ -182,15 +186,17 @@ Downloader::Downloader(const QString& log)
     has_prepared = true;
 
 }
-QString Downloader::start_download()
+QFuture<void> Downloader::start_download(bool& valid)
 {
     if (!has_prepared)
     {
-        return "未准备下载";
+        valid = false;
+        return download_future;
     }
     is_downloading = true;
-    download();
-    return "下载中";
+    valid = true;
+    this->download_future = QtConcurrent::run(&Downloader::download, this);
+    return download_future;
 }
 void Downloader::download()
 {
@@ -214,14 +220,17 @@ void Downloader::download()
         {
             return;
         }
+        emit download_progress(cur_progress, pre_progress);
+        pre_progress = cur_progress;
+        cur_progress += reply->size();
         file.write(reply->readAll());
         file.close();
-        cur_progress += reply->size();
     });
     QObject::connect(reply, &QNetworkReply::finished, [=]()
     {
         reply->deleteLater();
         manager->deleteLater();
+        emit finish();
         is_downloading = false;
         is_completed = true;
         if (cur_progress == size)
@@ -232,8 +241,17 @@ void Downloader::download()
             QFile::remove(this->_file_name + ".log");
         }
     });
-
-
+    QEventLoop loop;
+    QObject::connect(this, &Downloader::finish, &loop, &QEventLoop::quit);
+    loop.exec();
+}
+void Downloader::wait_for_complete()
+{
+    if (!is_downloading)
+    {
+        return;
+    }
+    download_future.waitForFinished();
 }
 void Downloader::pause_download()
 {
@@ -245,21 +263,16 @@ void Downloader::pause_download()
     manager->deleteLater();
 
 }
-void Downloader::download_progress(QTextStream& qts, int time_delta)
-{
-    if (cur_progress == size)
-    {
-        return;
-    }
-    if (!is_downloading)
-    {
-        return;
-    }
-    qts << QString("%1 %2").arg(cur_progress).arg(pre_progress) << "\n";
-    pre_progress = cur_progress;
-    delay(time_delta);
-    download_progress(qts, time_delta);
-}
+//QList<long long> Downloader::download_progress(int cur, int last)
+//{
+//    QList<long long> list;
+//    int cur_time = time(0);
+//    list.append(cur_time);
+//    list.append(cur);
+//    list.append(last);
+//    std::cout << cur_time << " " << cur << " " << last << std::endl;
+//    return list;
+//}
 void Downloader::delay(int ms)
 {
     QEventLoop loop;

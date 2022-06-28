@@ -14,10 +14,14 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QApplication>
+#include <ctime>
 #include <QRegularExpression>
 #include <QFileInfo>
-class Downloader
+#include <QtConcurrent>
+#include <sstream>
+class Downloader: public QObject
 {
+    Q_OBJECT
 public:
     static void delay(int ms);
     Downloader(const QString& bvid, const QString& file_path);  // cid, bvid均不含前缀
@@ -28,12 +32,16 @@ public:
     void download_cover(const QString& cover_path) const; //下载封面（还没写）
     QVector<QString> get_accept_quality();    //得到支持的视频质量
     QString download_prepare(const QString& quality);    // 获得下载链接，请求头等信息,参数为清晰度,返回状态，执行前必须执行上面的函数确定可行质量
-    QString start_download(); //开始下载
+    QFuture<void> start_download(bool& valid); //开始下载
     void pause_download(); //暂停下载
-    void download_progress(QTextStream& qts, int time_delta); //下载进度，每隔time_delta毫秒向qts写入一次进度信息，内容为“{当前下载字节数} {上一次调用下载字节数}”
+    //virtual QList<long long> download_progress(int cur_byte, int last_byte); //下载进度，建议继承按照需求重写”
     bool is_download() const; //是否正在下载
     bool is_complete() const; //是否下载完成
-
+    void wait_for_complete();
+    long long getSize() const;
+signals:
+    void download_progress(int cur_byte, int last_byte);
+    void finish();
 private:
     QString cid;
     QString bvid;
@@ -51,6 +59,7 @@ private:
     QVector<QString> accept_quality;
     QNetworkAccessManager* manager;
     QNetworkReply* reply;
+    QFuture<void> download_future;
     void get_header();
     void download();
 };
