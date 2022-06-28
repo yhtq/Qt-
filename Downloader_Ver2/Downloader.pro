@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cellelem.cpp \
     closedialog.cpp \
     helpdialog.cpp \
     line_edit.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
     progressbar.cpp
 
 HEADERS += \
+    cellelem.h \
     closedialog.h \
     helpdialog.h \
     line_edit.h \

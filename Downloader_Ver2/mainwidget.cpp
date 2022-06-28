@@ -1,5 +1,4 @@
 #include "mainwidget.h"
-#include "progressbar.h"
 #include "ui_mainwidget.h"
 
 MainWidget::MainWidget(QWidget *parent)
@@ -14,6 +13,7 @@ MainWidget::MainWidget(QWidget *parent)
     Init_SideBar();
     Init_ChildWidget1();
     Init_ChildWidget2();
+    Init_DownloadCell();
     childWidget2->close();
 
     //分割线
@@ -213,7 +213,7 @@ void MainWidget::Init_SideBar()
 void MainWidget::Init_ChildWidget1()
 {
     childWidget1 = new QWidget(this);
-    childWidget1->setGeometry(256,88,802,506);
+    childWidget1->setGeometry(256,88,802,168);
 
     //SearchBar
     QWidget *bar = new QWidget(childWidget1);
@@ -221,38 +221,39 @@ void MainWidget::Init_ChildWidget1()
     bar->setStyleSheet("background:rgb(255,255,255)");
 
     Line_Edit *search_bar = new Line_Edit(bar,30,4);
+    //下载按钮
+    QPushButton *down_load = new QPushButton(childWidget1);
+    down_load->setGeometry(572,4,50,50);
+    down_load->setStyleSheet("QPushButton{background: rgb(255, 255, 255);background-image:url(:/Icon/logo_.png);border-radius: 16px;}"
+                             "QPushButton:hover{background: rgb(240, 240, 240);background-image:url(:/Icon/logo_.png)}"
+                             "QPushButton:pressed{background: rgb(230, 230, 230);background-image:url(:/Icon/logo_.png)}");
+    connect(down_load, &QToolButton::clicked, this, [=]{
+        QString url = search_bar -> line_edit ->text();
+        QString path = QFileDialog::getExistingDirectory(this, "选择保存位置", ".");
+        if (path.isEmpty()) {
+            QMessageBox::warning(this, "提示", "请选择下载文件保存位置！");
+            return ;
+        }
 
-    //Cell
-    QWidget *cell = new QWidget(childWidget1);
-    cell->setGeometry(0,100,802,426);
-    cell->setStyleSheet("background:rgb(255,255,255)");
+        QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
+        CellElem *ele = new CellElem("task name", url, path, item, downloadCell);
+        item -> setSizeHint(QSize(752, 54));
+        downloadCell -> setItemWidget(item, ele);
+    });
+//    QWidget *cell = new QWidget(childWidget1);
+//    cell->setGeometry(0,100,802,426);
+//    cell->setStyleSheet("background:rgb(255,255,255)");
 
-    QWidget *ele = new QWidget(cell);
-    ele->setGeometry(0,0,802,49);
-    QWidget *ele_divider = new QWidget(ele);
-    ele_divider->setGeometry(49,48,753,1);
-    ele_divider->setStyleSheet("background:rgb(229,229,229)");
-    QFrame *ele_icon = new QFrame(ele);
-    ele_icon->setGeometry(0,0,40,40);
-    ele_icon->setStyleSheet("background-image:url(:/Icon/MainWidget/Cell/ele_icon.png)");
-    QLabel *ele_text = new QLabel(ele);
-    ele_text->setGeometry(52,10,167,14);
-    ele_text->setText(QString("Download_task1"));
-    ele_text->setStyleSheet("position: absolute;color: rgb(38, 38, 38);"
-                            "font-family: 微软雅黑;font-size: 14px;font-weight: 500;"
-                            "line-height: 20px;text-align: left");
-    QWidget *ele_extra = new QWidget(ele);
-    ele_extra->setGeometry(732,5,60,22);
-    ele_extra->setStyleSheet(".QWidget{border: 1px solid rgb(229, 229, 229);border-radius: 4px;}");
-    QLabel *ele_extra_text = new QLabel(ele_extra);
-    ele_extra_text->setGeometry(7,1,50,20);
-    ele_extra_text->setText(QString("企业可见"));
-    ele_extra_text->setStyleSheet("position: absolute;color: rgb(140, 140, 140);"
-                                  "font-family: 微软雅黑;font-size: 12px;font-weight: 400;"
-                                  "line-height: 20px;text-align: left");
-    // 下载条相关
-    ProgressBar *ele_progress_bar = new ProgressBar(":/Icon/MainWidget/Cell/ele_progress_bar.bmp", ele);
-    ele_progress_bar -> setGeometry(300, 0, 420, 35);
+//    CellElem *ele = new CellElem("test", cell);
+//    ele->setGeometry(0,0,802,49);
+}
+
+void MainWidget::Init_DownloadCell()
+{
+    downloadCell = new QListWidget(this);
+    downloadCell -> setGeometry(256, 180, 772, 426);
+    downloadCell -> setStyleSheet("background:rgb(255,255,255)");
+    downloadCell -> setFrameShape(QListWidget::NoFrame);
 }
 
 void MainWidget::Init_ChildWidget2()

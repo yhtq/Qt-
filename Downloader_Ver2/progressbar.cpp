@@ -15,6 +15,7 @@ ProgressBar::ProgressBar(const QString &fileName, QWidget *parent):
     progBar.setFixedHeight(15);
 
     progValue.setText(QString("%1%").arg(progBar.value()));
+    progValue.setAttribute(Qt::WA_TranslucentBackground);
 //    progValue.setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 //    progValue.setMinimumWidth(25);
 

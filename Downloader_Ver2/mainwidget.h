@@ -13,6 +13,11 @@
 #include "logindialog.h"
 #include "helpdialog.h"
 #include "QDebug"
+#include "progressbar.h"
+#include "cellelem.h"
+#include <QFileDialog>
+#include <QListWidget>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -32,6 +37,8 @@ public:
     void Init_SideBar();
     void Init_ChildWidget1();
     void Init_ChildWidget2();
+    void Init_DownloadCell();
+    QListWidget *downloadCell;
 
 protected:
     //拖拽窗口
