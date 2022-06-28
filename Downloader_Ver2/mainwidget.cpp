@@ -18,7 +18,7 @@ MainWidget::MainWidget(QWidget *parent)
 
     //分割线
     QWidget *divider = new QWidget(this);
-    divider->setGeometry(1,41,1078,1);
+    divider->setGeometry(1,31,1078,1);
     divider->setStyleSheet("background:rgb(245,245,245)");
 }
 
@@ -39,19 +39,20 @@ void MainWidget::Init_Widget()
 void MainWidget::Init_Top()
 {
     top = new QWidget(this);
-    top->setGeometry(1,1,1078,40);
-    top->setStyleSheet("background:rgb(191,244,248)");
+    top->setGeometry(1,1,1078,30);
+    //top->setStyleSheet("background:rgb(191,244,248)");
+    top->setStyleSheet("background:rgb(136,178,210)");
 
     //登录按钮
     QPushButton *logo = new QPushButton(top);
-    logo->setGeometry(20,10,24,20);
+    logo->setGeometry(20,5,24,20);
     logo->setIcon(QIcon(":/Icon/MainWidget/Top/logo_icon.png"));
     logo->setStyleSheet("border:0px");
 
     QLabel *title = new QLabel(top);
-    title->setGeometry(57,7,312,24);
+    title->setGeometry(57,2,312,24);
     title->setText(QString("bilibili Downloader!!!"));
-    title->setStyleSheet("position: absolute;color: rgb(60, 60, 60);"
+    title->setStyleSheet("position: absolute;color: rgb(20, 20, 20);"
                          "font-family: 微软雅黑;font-size: 16px;font-weight: 480;"
                          "line-height: 24px;text-align: left");
     connect(logo,&QPushButton::clicked,logo,[=]{
@@ -62,26 +63,25 @@ void MainWidget::Init_Top()
 
     //最小化和关闭按钮
     QWidget *widget_control = new QWidget(top);
-    widget_control->setGeometry(920,0,160,40);
-    widget_control->setStyleSheet("background:rgb(235,235,235)");
+    widget_control->setGeometry(920,0,160,30);
+    widget_control->setStyleSheet("background:rgb(250,250,250)");
     QPushButton *widget_minimize = new QPushButton(widget_control);
-    widget_minimize->setGeometry(0,0,80,40);
+    widget_minimize->setGeometry(0,0,80,30);
     widget_minimize->setIcon(QIcon(":/Icon/MainWidget/Top/minimize.png"));
-    widget_minimize->setStyleSheet("QPushButton{background:rgb(255,255,255);border:0px}"
-                                   "QPushButton:hover{background:rgb(245,245,245);border:0px}"
-                                   "QPushButton:pressed{background:rgb(235,235,235);border:0px}");
+    widget_minimize->setStyleSheet("QPushButton{background:rgb(250,250,250);border:0px}"
+                                   "QPushButton:hover{background:rgb(240,240,240);border:0px}"
+                                   "QPushButton:pressed{background:rgb(230,230,230);border:0px}");
     connect(widget_minimize,&QPushButton::clicked,widget_minimize,[=]{
        this->showMinimized();
     });
 
     QPushButton *widget_close = new QPushButton(widget_control);
-    widget_close->setGeometry(80,0,80,40);
+    widget_close->setGeometry(80,0,80,30);
     widget_close->setIcon(QIcon(":/Icon/MainWidget/Top/close.png"));
-    widget_close->setStyleSheet("QPushButton{background:rgb(255,255,255);border:0px}"
-                                "QPushButton:hover{background:rgb(245,245,245);border:0px}"
-                                "QPushButton:pressed{background:rgb(235,235,235);border:0px}");
+    widget_close->setStyleSheet("QPushButton{background:rgb(250,250,250);border:0px}"
+                                "QPushButton:hover{background:rgb(240,240,240);border:0px}"
+                                "QPushButton:pressed{background:rgb(230,230,230);border:0px}");
     connect(widget_close,&QPushButton::clicked,widget_close,[=]{
-
         CloseDialog *log = new CloseDialog;
         int opt = log->exec();
         if(opt == QDialog::Accepted) this->close();
@@ -93,39 +93,39 @@ void MainWidget::Init_SideBar()
     //侧栏
     sideBar = new QWidget(this);
     sideBar->setObjectName("sideBar");
-    sideBar->setGeometry(21,87,211,259);
+    sideBar->setGeometry(21,70,211,209);
     sideBar->setStyleSheet("#sideBar{background:rgb(255,255,255);border:1px solid rgb(235,235,235)}");
 
     //分割线
     QWidget *divider = new QWidget(sideBar);
-    divider->setGeometry(6,88,197,1);
+    divider->setGeometry(1,102,209,1);
     divider->setStyleSheet("background:rgb(229,229,229)");
 
     //按钮选项
     ToolWidget *btn1 = new ToolWidget(sideBar);
-    btn1->setGeometry(1,1,209,40);
+    btn1->setGeometry(1,1,209,50);
     btn1->setStyleSheet("background:rgb(237,247,255)");
     QFrame *icon1 = new QFrame(btn1);
-    icon1->setGeometry(16,10,20,20);
+    icon1->setGeometry(13,10,24,24);
     icon1->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon1.png)");
     QLabel *text1 = new QLabel(btn1);
-    text1->setGeometry(44,10,110,20);
+    text1->setGeometry(54,6,110,30);
     text1->setText(QString("b站资源下载"));
-    text1->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
-                         "font-family: 微软雅黑;font-size: 14px;font-weight: 450;"
+    text1->setStyleSheet("position: absolute;color: rgb(100, 100, 100);"
+                         "font-family: 微软雅黑;font-size: 16px;font-weight: 450;"
                          "line-height: 20px;text-align: left");
 
     ToolWidget *btn2 = new ToolWidget(sideBar);
-    btn2->setGeometry(1,41,209,40);
+    btn2->setGeometry(1,51,209,50);
     btn2->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon2 = new QFrame(btn2);
-    icon2->setGeometry(16,10,20,20);
+    icon2->setGeometry(13,10,24,24);
     icon2->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon2.png)");
     QLabel *text2 = new QLabel(btn2);
-    text2->setGeometry(44,10,110,20);
+    text2->setGeometry(52,5,110,30);
     text2->setText(QString("下载音频播放"));
-    text2->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
-                         "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
+    text2->setStyleSheet("position: absolute;color: rgb(100, 100, 100);"
+                         "font-family: 微软雅黑;font-size: 16px;font-weight: 450;"
                          "line-height: 20px;text-align: left");
 
     connect(btn1,&ToolWidget::Widget_mouseReleased,btn1,[=]{
@@ -145,16 +145,16 @@ void MainWidget::Init_SideBar()
 
     //Help Button
     ToolWidget *btn_help = new ToolWidget(sideBar);
-    btn_help->setGeometry(1,98,209,40);
+    btn_help->setGeometry(1,108,209,50);
     btn_help->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon_help = new QFrame(btn_help);
-    icon_help->setGeometry(16,10,20,20);
-    icon_help->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon_.png)");
+    icon_help->setGeometry(13,10,24,24);
+    icon_help->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon_help.png)");
     QLabel *text_help = new QLabel(btn_help);
-    text_help->setGeometry(44,10,110,20);
-    text_help->setText(QString("帮助"));
-    text_help->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
-                         "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
+    text_help->setGeometry(54,5,110,30);
+    text_help->setText(QString("Help"));
+    text_help->setStyleSheet("position: absolute;color: rgb(100, 100, 100);"
+                         "font-family: 微软雅黑;font-size: 16px;font-weight: 450;"
                          "line-height: 20px;text-align: left");
     //HoverEnter Event
     connect(btn_help,&ToolWidget::hoverEnter,btn_help,[=]{
@@ -181,16 +181,16 @@ void MainWidget::Init_SideBar()
 
     //Setting Button
     ToolWidget *btn_set = new ToolWidget(sideBar);
-    btn_set->setGeometry(1,138,209,40);
+    btn_set->setGeometry(1,158,209,50);
     btn_set->setStyleSheet("background:rgb(255,255,255)");
     QFrame *icon_set = new QFrame(btn_set);
-    icon_set->setGeometry(16,10,20,20);
+    icon_set->setGeometry(13,10,24,24);
     icon_set->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/icon_set.png)");
     QLabel *text_set = new QLabel(btn_set);
-    text_set->setGeometry(44,10,110,20);
-    text_set->setText(QString("应用设置"));
-    text_set->setStyleSheet("position: absolute;color: rgb(120, 120, 120);"
-                            "font-family: 微软雅黑;font-size: 14px;font-weight: 400;"
+    text_set->setGeometry(54,5,110,30);
+    text_set->setText(QString("Setting"));
+    text_set->setStyleSheet("position: absolute;color: rgb(100, 100, 100);"
+                            "font-family: 微软雅黑;font-size: 16px;font-weight: 450;"
                             "line-height: 20px;text-align: left");
     //HoverEnter Event
     connect(btn_set,&ToolWidget::hoverEnter,btn_set,[=]{
@@ -213,20 +213,28 @@ void MainWidget::Init_SideBar()
 void MainWidget::Init_ChildWidget1()
 {
     childWidget1 = new QWidget(this);
-    childWidget1->setGeometry(256,88,802,506);
+    childWidget1->setGeometry(256,70,802,506);
 
     //SearchBar
     QWidget *bar = new QWidget(childWidget1);
     bar->setGeometry(0,0,802,80);
     bar->setStyleSheet("background:rgb(255,255,255)");
 
-    Line_Edit *search_bar = new Line_Edit(bar,30,4);
+    //分割线
+//    QWidget *divider1 = new QWidget(bar);
+//    divider1->setGeometry(0,0,802,1);
+//    divider1->setStyleSheet("background:rgb(205,205,205)");
+    QWidget *divider2 = new QWidget(bar);
+    divider2->setGeometry(0,61,752,1);
+    divider2->setStyleSheet("background:rgb(205,205,205)");
+
+    Line_Edit *search_bar = new Line_Edit(bar,0,4);
     //下载按钮
-    QPushButton *down_load = new QPushButton(childWidget1);
-    down_load->setGeometry(572,4,50,50);
-    down_load->setStyleSheet("QPushButton{background: rgb(255, 255, 255);background-image:url(:/Icon/logo_.png);border-radius: 16px;}"
-                             "QPushButton:hover{background: rgb(240, 240, 240);background-image:url(:/Icon/logo_.png)}"
-                             "QPushButton:pressed{background: rgb(230, 230, 230);background-image:url(:/Icon/logo_.png)}");
+    QPushButton *down_load = new QPushButton(bar);
+    down_load->setGeometry(680,5,48,48);
+    down_load->setStyleSheet("QPushButton{background: rgb(245, 245, 245);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png);border-radius: 0px;border:1px solid rgb(235,235,235)}"
+                             "QPushButton:hover{background: rgb(235, 235, 235);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png)}"
+                             "QPushButton:pressed{background: rgb(225, 225, 225);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png);border:1px solid rgb(225,225,225)}");
     connect(down_load, &QToolButton::clicked, this, [=]{
         QString url = search_bar -> line_edit ->text();
         QString path = QFileDialog::getExistingDirectory(this, "选择保存位置", ".");
@@ -237,7 +245,7 @@ void MainWidget::Init_ChildWidget1()
 
         QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
         CellElem *ele = new CellElem("task name", url, path, item, downloadCell);
-        item -> setSizeHint(QSize(752, 60));
+        item -> setSizeHint(QSize(752, 70));
         downloadCell -> setItemWidget(item, ele);
     });
 }
@@ -245,7 +253,7 @@ void MainWidget::Init_ChildWidget1()
 void MainWidget::Init_DownloadCell()
 {
     downloadCell = new QListWidget(childWidget1);
-    downloadCell -> setGeometry(0, 80, 772, 426);
+    downloadCell -> setGeometry(0, 80, 800, 426);
     downloadCell -> setStyleSheet("background:rgb(255,255,255)");
     downloadCell -> setFrameShape(QListWidget::NoFrame);
     downloadCell -> setSelectionMode(QAbstractItemView::MultiSelection);
@@ -278,7 +286,7 @@ void MainWidget::Init_DownloadCell()
 void MainWidget::Init_ChildWidget2()
 {
     childWidget2 = new QWidget(this);
-    childWidget2->setGeometry(256,88,802,506);
+    childWidget2->setGeometry(256,70,802,506);
     childWidget2->setStyleSheet("background:rgb(230,230,230)");
 }
 

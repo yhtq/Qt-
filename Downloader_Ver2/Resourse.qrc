@@ -5,11 +5,14 @@
         <file>Icon/MainWidget/Top/logo_icon.png</file>
         <file>Icon/MainWidget/Top/search_bar_icon.png</file>
         <file>Icon/MainWidget/SideBar/icon2.png</file>
-        <file>Icon/MainWidget/SideBar/icon_.png</file>
-        <file>Icon/MainWidget/Cell/ele_icon.png</file>
-        <file>Icon/logo_.png</file>
         <file>Icon/MainWidget/Top/minimize.png</file>
         <file>Icon/MainWidget/Top/close.png</file>
-        <file>Icon/MainWidget/Cell/ele_progress_bar.bmp</file>
+        <file>Icon/logo.png</file>
+        <file>Icon/MainWidget/ChildWidget1/Cell/ele_icon.png</file>
+        <file>Icon/MainWidget/ChildWidget1/Cell/ele_progress_bar.bmp</file>
+        <file>Icon/MainWidget/ChildWidget1/SearchBar/download.png</file>
+        <file>Icon/MainWidget/ChildWidget1/SearchBar/icon.png</file>
+        <file>Icon/MainWidget/ChildWidget1/SearchBar/text.png</file>
+        <file>Icon/MainWidget/SideBar/icon_help.png</file>
     </qresource>
 </RCC>
