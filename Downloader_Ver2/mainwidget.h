@@ -38,7 +38,6 @@ public:
     void Init_ChildWidget1();
     void Init_ChildWidget2();
     void Init_DownloadCell();
-    QListWidget *downloadCell;
 
 protected:
     //拖拽窗口
@@ -55,5 +54,6 @@ private:
 
     QWidget *childWidget1, *childWidget2;
     QWidget *top, *sideBar;
+    QListWidget *downloadCell;
 };
 #endif //  MAINWIDGET_H
