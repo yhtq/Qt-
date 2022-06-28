@@ -10,6 +10,7 @@ public:
     void init();
     void setPos(int PX_,int PY_);
     void setSize(int W_,int H_);
+    QLineEdit *line_edit;
 
 private:
     QWidget *parent;
