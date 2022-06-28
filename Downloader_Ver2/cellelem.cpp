@@ -5,7 +5,7 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
       m_taskName(taskName)
 {
     QWidget *ele_divider = new QWidget(this);
-    ele_divider->setGeometry(0,53,753,1);
+    ele_divider->setGeometry(0,59,753,1);
     ele_divider->setStyleSheet("background:rgb(229,229,229)");
     QFrame *ele_icon = new QFrame(this);
     ele_icon->setGeometry(2,4,40,40);

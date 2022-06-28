@@ -213,7 +213,7 @@ void MainWidget::Init_SideBar()
 void MainWidget::Init_ChildWidget1()
 {
     childWidget1 = new QWidget(this);
-    childWidget1->setGeometry(256,88,802,168);
+    childWidget1->setGeometry(256,88,802,506);
 
     //SearchBar
     QWidget *bar = new QWidget(childWidget1);
@@ -237,21 +237,15 @@ void MainWidget::Init_ChildWidget1()
 
         QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
         CellElem *ele = new CellElem("task name", url, path, item, downloadCell);
-        item -> setSizeHint(QSize(752, 54));
+        item -> setSizeHint(QSize(752, 60));
         downloadCell -> setItemWidget(item, ele);
     });
-//    QWidget *cell = new QWidget(childWidget1);
-//    cell->setGeometry(0,100,802,426);
-//    cell->setStyleSheet("background:rgb(255,255,255)");
-
-//    CellElem *ele = new CellElem("test", cell);
-//    ele->setGeometry(0,0,802,49);
 }
 
 void MainWidget::Init_DownloadCell()
 {
-    downloadCell = new QListWidget(this);
-    downloadCell -> setGeometry(256, 180, 772, 426);
+    downloadCell = new QListWidget(childWidget1);
+    downloadCell -> setGeometry(0, 80, 772, 426);
     downloadCell -> setStyleSheet("background:rgb(255,255,255)");
     downloadCell -> setFrameShape(QListWidget::NoFrame);
     downloadCell -> setSelectionMode(QAbstractItemView::MultiSelection);
