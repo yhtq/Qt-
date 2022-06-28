@@ -14,11 +14,12 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QApplication>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QFileInfo>
 class Downloader
 {
 public:
+    static void delay(int ms);
     Downloader(const QString& bvid, const QString& file_path);  // cid, bvid均不含前缀
     Downloader(const QString& log);  //读取log文件，获取信息，输入参数为log文件内容，读取正常完成后可以直接执行下载
     QJsonDocument get_video_info() const; // 获取视频信息,内容是 api.bilibili.com/x/web-interface/view?bvid=BV1zE1y1y7zU
@@ -30,6 +31,8 @@ public:
     QString start_download(); //开始下载
     void pause_download(); //暂停下载
     void download_progress(QTextStream& qts, int time_delta); //下载进度，每隔time_delta毫秒向qts写入一次进度信息，内容为“{当前下载字节数} {上一次调用下载字节数}”
+    bool is_download() const; //是否正在下载
+    bool is_complete() const; //是否下载完成
 
 private:
     QString cid;
@@ -37,6 +40,7 @@ private:
     QJsonDocument info;
     bool has_prepared = false;
     bool is_downloading = false;
+    bool is_completed = false;
     long long size; // 视频总字节数
     long long pre_progress = 0;
     long long cur_progress = 0;

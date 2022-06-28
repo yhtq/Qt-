@@ -1,0 +1,4 @@
+D:/qt/Qt-/Downloader_Ver2/build-core-Qt_6_3_1_MinGW_64_bit_temporary-Release/CMakeFiles/downloader_new.dir
+D:/qt/Qt-/Downloader_Ver2/build-core-Qt_6_3_1_MinGW_64_bit_temporary-Release/CMakeFiles/edit_cache.dir
+D:/qt/Qt-/Downloader_Ver2/build-core-Qt_6_3_1_MinGW_64_bit_temporary-Release/CMakeFiles/rebuild_cache.dir
+D:/qt/Qt-/Downloader_Ver2/build-core-Qt_6_3_1_MinGW_64_bit_temporary-Release/CMakeFiles/downloader_new_autogen.dir

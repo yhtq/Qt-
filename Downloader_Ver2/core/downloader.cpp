@@ -7,11 +7,18 @@ Downloader::Downloader(const QString& bvid, const QString& file_path)
 {
     this->bvid = bvid;
     this->file_path = file_path;
-
 }
 void Downloader::download_cover(const QString& cover_path) const
 {
     //TODO
+}
+bool Downloader::is_download() const
+{
+    return is_downloading;
+}
+bool Downloader::is_complete() const
+{
+    return is_completed;
 }
 QJsonDocument Downloader::get_video_info() const
 {
@@ -32,7 +39,9 @@ void Downloader::select_page(const QString& cid)
     {
         return ;
     }
+    std::string content = res.getText().toStdString();
     this->info = QJsonDocument::fromJson(res.getContent());
+
 }
 QVector<QString> Downloader::get_accept_quality()
 {
@@ -40,7 +49,9 @@ QVector<QString> Downloader::get_accept_quality()
     QJsonArray jsonArray = jsonObject["data"].toObject()["accept_quality"].toArray();
     for (int i = 0; i < jsonArray.size(); i++)
     {
-        accept_quality.push_back(jsonArray.at(i).toString());
+        int quality = jsonArray.at(i).toDouble();
+        this->accept_quality.push_back(QString::number(quality));
+        std::string s = QString::number(quality).toStdString();
     }
     return accept_quality;
 }
@@ -51,12 +62,12 @@ QString Downloader::download_prepare(const QString& quality)
         return "视频质量不可用";
     }
     auto response = Get("https://api.bilibili.com/x/player/playurl?cid=" + this->cid + "&bvid=" + this->bvid + "&qn=" + quality + "&type=&otype=json");
-    if (response.getCode() != 0)
+    if (response.getCode() != 200)
     {
         return "获取视频失败";
     }
     QJsonDocument jsonDocument = QJsonDocument::fromJson(response.getContent());
-    this->size = jsonDocument.object()["data"].toObject()["size"].toInteger();
+    this->size = jsonDocument.object()["data"].toObject()["durl"].toArray().at(0).toObject()["size"].toDouble();
     this->url = jsonDocument.object()["data"].toObject()["durl"].toArray().at(0).toObject()["url"].toString();
     this->_file_name = this->file_path + "/" + this->bvid + "_"+ this->cid + "_" + quality;
     QString file_name = this->file_path + "/" + this->bvid + "_"+ this->cid + "_" + quality + ".tmp";    //  下载过程中使用的临时文件名
@@ -77,8 +88,8 @@ QString Downloader::download_prepare(const QString& quality)
         cur_progress = 0;
         pre_progress = 0;
     }
-    QFile log_file("./log/" + this->bvid + "_"+ this->cid + "_" + quality + ".log");
-    if (!log_file.open(QIODevice::WriteOnly | QIODevice::Text))
+    QFile log_file("./log/" + this->bvid + "_"+ this->cid +  "_" + quality + ".log");
+    if (!log_file.open(QIODevice::WriteOnly))
     {
         return "log文件打开失败";
     }
@@ -86,6 +97,7 @@ QString Downloader::download_prepare(const QString& quality)
     out << QString("bvid:%1 cid:%2 quality:%3 file_path:%4").arg(this->bvid).arg(this->cid).arg(quality).arg(this->file_path) << '\n';
     out << QString("url:%1").arg(url) << '\n';
     out << QString("size:%1").arg(size) << '\n';
+    log_file.close();
     get_header();
     if (headers["Host"] == "")
     {
@@ -99,19 +111,19 @@ void Downloader::get_header()
     headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36";
     headers["Referer"] = "https://www.bilibili.com/";
     headers["Origin"] = "https://www.bilibili.com";
-    QRegExp rx("https://(.*?cn)");
-    int pos = rx.indexIn(url);
-    if (pos == -1 )
+    QRegularExpression rx("https://(.*?\\.cn)");
+    auto match = rx.match(url);
+    if (!match.hasMatch())
     {
-        rx = QRegExp("https://(.*?com)");
-        rx.indexIn(url);
+        rx.setPattern("https://(.*?\\.com)");
+        match = rx.match(url);
     }
-    if (pos == -1)
+    if (!match.hasMatch())
     {
         headers["Host"] = "";
         return;
     }
-    QString host = rx.cap(1);
+    QString host = match.captured(1);
     headers["Host"] = host.toUtf8();
 }
 Downloader::Downloader(const QString& log)
@@ -120,30 +132,30 @@ Downloader::Downloader(const QString& log)
     {
         return;
     }
-    auto rx = QRegExp("bvid:(.*?) cid:(.*?) quality:(.*?) file_path:(.*?)");
-    int pos = rx.indexIn(log);
-    if (pos == -1)
+    auto rx = QRegularExpression("bvid:(.*?) cid:(.*?) quality:(.*?) file_path:(.*?)");
+    auto match = rx.match(log);
+    if (!match.hasMatch())
     {
         return;
     }
-    this->bvid = rx.cap(1);
-    this->cid = rx.cap(2);
-    QString quality = rx.cap(3);
-    this->file_path = rx.cap(4);
-    rx = QRegExp("url:(.*?)");
-    pos = rx.indexIn(log);
-    if (pos == -1)
+    this->bvid = match.captured(1);
+    this->cid = match.captured(2);
+    QString quality = match.captured(3);
+    this->file_path = match.captured(4);
+    rx = QRegularExpression("url:(.*?)");
+    match = rx.match(log);
+    if (!match.hasMatch())
     {
         return;
     }
-    this->url = rx.cap(1);
-    rx = QRegExp("size:(.*?)");
-    pos = rx.indexIn(log);
-    if (pos == -1)
+    this->url = match.captured(1);
+    rx = QRegularExpression("size:(.*?)");
+    match = rx.match(log);
+    if (!match.hasMatch())
     {
         return;
     }
-    this->size = rx.cap(1).toLongLong();
+    this->size = match.captured(1).toLongLong();
     this->_file_name = this->file_path + "/" + this->bvid + "_"+ this->cid + "_" + quality;
     this->get_header();
     if (headers["Host"] == "")
@@ -187,8 +199,10 @@ void Downloader::download()
     QString cur_size = QString::number(cur_progress);
     headers["Range"] = QString("bytes=" + cur_size + "-" + down_size).toLatin1();
     request.setUrl(QUrl(url));
-    for (auto i : headers)
+    for (auto i : headers.keys())
     {
+        auto a = i;
+        auto b = headers[i];
         request.setRawHeader(i, headers[i]);
     }
     manager = new QNetworkAccessManager();
@@ -209,6 +223,7 @@ void Downloader::download()
         reply->deleteLater();
         manager->deleteLater();
         is_downloading = false;
+        is_completed = true;
         if (cur_progress == size)
         {
             QFile file(this->_file_name + ".tmp");
@@ -242,11 +257,15 @@ void Downloader::download_progress(QTextStream& qts, int time_delta)
     }
     qts << QString("%1 %2").arg(cur_progress).arg(pre_progress) << "\n";
     pre_progress = cur_progress;
+    delay(time_delta);
+    download_progress(qts, time_delta);
+}
+void Downloader::delay(int ms)
+{
     QEventLoop loop;
     QTimer t;
     t.connect(&t, &QTimer::timeout, &loop, &QEventLoop::quit);
-    t.start(time_delta);
+    t.start(ms);
     loop.exec();
-    download_progress(qts, time_delta);
-}
+} 
 #endif // _DOWNLOADER_H

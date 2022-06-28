@@ -429,10 +429,8 @@ CMakeFiles/downloader_new.dir/downloader.cpp.obj: ../downloader.cpp \
   E:/Qt/6.3.1/mingw_64/include/QtCore/qjsonarray.h \
   E:/Qt/6.3.1/mingw_64/include/QtCore/QJsonObject \
   E:/Qt/6.3.1/mingw_64/include/QtCore/qjsonobject.h \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/QRegExp \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qregexp.h \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qcore5global.h \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qtcore5compat-config.h \
+  E:/Qt/6.3.1/mingw_64/include/QtCore/QRegularExpression \
+  E:/Qt/6.3.1/mingw_64/include/QtCore/qregularexpression.h \
   E:/Qt/6.3.1/mingw_64/include/QtCore/QFileInfo \
   E:/Qt/6.3.1/mingw_64/include/QtCore/qfileinfo.h \
   E:/Qt/6.3.1/mingw_64/include/QtCore/qfile.h
@@ -1274,10 +1272,8 @@ CMakeFiles/downloader_new.dir/main.cpp.obj: ../main.cpp \
   E:/Qt/6.3.1/mingw_64/include/QtGui/qguiapplication.h \
   E:/Qt/6.3.1/mingw_64/include/QtGui/qinputmethod.h \
   E:/Qt/6.3.1/mingw_64/include/QtGui/qguiapplication_platform.h \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/QRegExp \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qregexp.h \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qcore5global.h \
-  E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qtcore5compat-config.h \
+  E:/Qt/6.3.1/mingw_64/include/QtCore/QRegularExpression \
+  E:/Qt/6.3.1/mingw_64/include/QtCore/qregularexpression.h \
   E:/Qt/6.3.1/mingw_64/include/QtCore/QFileInfo \
   E:/Qt/6.3.1/mingw_64/include/QtCore/qfileinfo.h \
   E:/Qt/6.3.1/mingw_64/include/QtCore/qfile.h \
@@ -1580,8 +1576,6 @@ E:/Qt/6.3.1/mingw_64/include/QtNetwork/qabstractsocket.h:
 
 C:/msys64/mingw64/include/c++/10.3.0/bits/ostream_insert.h:
 
-E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qtcore5compat-config.h:
-
 E:/Qt/6.3.1/mingw_64/include/QtCore/qbindingstorage.h:
 
 C:/msys64/mingw64/include/c++/10.3.0/bits/cxxabi_forced.h:
@@ -1629,6 +1623,8 @@ C:/msys64/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h:
 C:/msys64/mingw64/x86_64-w64-mingw32/include/malloc.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/mm_malloc.h:
+
+E:/Qt/6.3.1/mingw_64/include/QtCore/QRegularExpression:
 
 C:/msys64/mingw64/include/c++/10.3.0/pstl/glue_numeric_defs.h:
 
@@ -2113,12 +2109,6 @@ E:/Qt/6.3.1/mingw_64/include/QtCore/qregularexpression.h:
 E:/Qt/6.3.1/mingw_64/include/QtCore/QJsonObject:
 
 E:/Qt/6.3.1/mingw_64/include/QtCore/qjsonobject.h:
-
-E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/QRegExp:
-
-E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qregexp.h:
-
-E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qcore5global.h:
 
 E:/Qt/6.3.1/mingw_64/include/QtCore/QFileInfo:
 

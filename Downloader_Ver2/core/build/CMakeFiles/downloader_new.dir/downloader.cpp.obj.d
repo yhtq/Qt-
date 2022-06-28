@@ -427,10 +427,8 @@ CMakeFiles/downloader_new.dir/downloader.cpp.obj: \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qjsonarray.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/QJsonObject \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qjsonobject.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/QRegExp \
- E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qregexp.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qcore5global.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore5Compat/qtcore5compat-config.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/QRegularExpression \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qregularexpression.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/QFileInfo \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qfileinfo.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qfile.h

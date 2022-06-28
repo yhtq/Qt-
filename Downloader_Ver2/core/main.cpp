@@ -23,8 +23,14 @@ int main(int argc, char *argv[])
     d.get_accept_quality();
     d.download_prepare("16");
     d.start_download();
-    _log_stream << "3" << '\n';
-    _log_stream << "4" << '\n';
+    d.download_progress(_log_stream, 1000);
+    while (!d.is_download())
+    {
+        QString s = "";
+        _log_stream >> s;
+        std::cout << s.toStdString() << std::endl;
+        Downloader::delay(1000);
+    }
     _log.close();
     return a.exec();
 }
