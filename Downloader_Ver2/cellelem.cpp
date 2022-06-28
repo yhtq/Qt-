@@ -1,6 +1,6 @@
 #include "cellelem.h"
 
-CellElem::CellElem(const QString &taskName, QWidget *parent)
+CellElem::CellElem(const QString &taskName, const QString &url, const QString &path, QListWidgetItem *item, QWidget *parent)
     : QWidget{parent},
       m_taskName(taskName)
 {
@@ -29,4 +29,6 @@ CellElem::CellElem(const QString &taskName, QWidget *parent)
     // 下载条相关
     ProgressBar *ele_progress_bar = new ProgressBar(":/Icon/MainWidget/Cell/ele_progress_bar.bmp", this);
     ele_progress_bar -> setGeometry(450, 0, 220, 35);
+
+    // do the download work here.
 }

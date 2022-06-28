@@ -235,10 +235,8 @@ void MainWidget::Init_ChildWidget1()
             return ;
         }
 
-        // do the downloading work
-
-        CellElem *ele = new CellElem("test", downloadCell);
         QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
+        CellElem *ele = new CellElem("task name", url, path, item, downloadCell);
         item -> setSizeHint(QSize(752, 54));
         downloadCell -> setItemWidget(item, ele);
     });
