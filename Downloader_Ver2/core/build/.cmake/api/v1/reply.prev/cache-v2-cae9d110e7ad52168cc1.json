@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "e:/code/Qt/downloader_new/build"
+			"value" : "d:/qt/Qt-/Downloader_Ver2/core/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -155,10 +155,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/msys64/mingw64/bin/x86_64-w64-mingw32-g++.exe"
 		},
 		{
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/code/Qt/downloader_new"
+			"value" : "D:/qt/Qt-/Downloader_Ver2/core"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -6315,7 +6315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/code/Qt/downloader_new/build"
+			"value" : "D:/qt/Qt-/Downloader_Ver2/core/build"
 		},
 		{
 			"name" : "downloader_new_IS_TOP_LEVEL",
@@ -6339,7 +6339,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/code/Qt/downloader_new"
+			"value" : "D:/qt/Qt-/Downloader_Ver2/core"
 		}
 	],
 	"kind" : "cache",

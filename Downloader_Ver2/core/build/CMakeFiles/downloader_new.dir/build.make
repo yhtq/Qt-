@@ -52,10 +52,10 @@ RM = E:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\code\Qt\downloader_new
+CMAKE_SOURCE_DIR = D:\qt\Qt-\Downloader_Ver2\core
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\code\Qt\downloader_new\build
+CMAKE_BINARY_DIR = D:\qt\Qt-\Downloader_Ver2\core\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/downloader_new.dir/depend.make
@@ -72,61 +72,61 @@ CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj: C
 CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj: CMakeFiles/downloader_new.dir/includes_CXX.rsp
 CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj: downloader_new_autogen/mocs_compilation.cpp
 CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj: CMakeFiles/downloader_new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\code\Qt\downloader_new\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.obj -c E:\code\Qt\downloader_new\build\downloader_new_autogen\mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj"
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.obj -c D:\qt\Qt-\Downloader_Ver2\core\build\downloader_new_autogen\mocs_compilation.cpp
 
 CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.i"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\code\Qt\downloader_new\build\downloader_new_autogen\mocs_compilation.cpp > CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.i
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\qt\Qt-\Downloader_Ver2\core\build\downloader_new_autogen\mocs_compilation.cpp > CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.i
 
 CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/downloader_new.dir/downloader_new_autogen/mocs_compilation.cpp.s"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\code\Qt\downloader_new\build\downloader_new_autogen\mocs_compilation.cpp -o CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.s
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\qt\Qt-\Downloader_Ver2\core\build\downloader_new_autogen\mocs_compilation.cpp -o CMakeFiles\downloader_new.dir\downloader_new_autogen\mocs_compilation.cpp.s
 
 CMakeFiles/downloader_new.dir/downloader.cpp.obj: CMakeFiles/downloader_new.dir/flags.make
 CMakeFiles/downloader_new.dir/downloader.cpp.obj: CMakeFiles/downloader_new.dir/includes_CXX.rsp
 CMakeFiles/downloader_new.dir/downloader.cpp.obj: ../downloader.cpp
 CMakeFiles/downloader_new.dir/downloader.cpp.obj: CMakeFiles/downloader_new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\code\Qt\downloader_new\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/downloader_new.dir/downloader.cpp.obj"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/downloader.cpp.obj -MF CMakeFiles\downloader_new.dir\downloader.cpp.obj.d -o CMakeFiles\downloader_new.dir\downloader.cpp.obj -c E:\code\Qt\downloader_new\downloader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/downloader_new.dir/downloader.cpp.obj"
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/downloader.cpp.obj -MF CMakeFiles\downloader_new.dir\downloader.cpp.obj.d -o CMakeFiles\downloader_new.dir\downloader.cpp.obj -c D:\qt\Qt-\Downloader_Ver2\core\downloader.cpp
 
 CMakeFiles/downloader_new.dir/downloader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/downloader_new.dir/downloader.cpp.i"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\code\Qt\downloader_new\downloader.cpp > CMakeFiles\downloader_new.dir\downloader.cpp.i
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\qt\Qt-\Downloader_Ver2\core\downloader.cpp > CMakeFiles\downloader_new.dir\downloader.cpp.i
 
 CMakeFiles/downloader_new.dir/downloader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/downloader_new.dir/downloader.cpp.s"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\code\Qt\downloader_new\downloader.cpp -o CMakeFiles\downloader_new.dir\downloader.cpp.s
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\qt\Qt-\Downloader_Ver2\core\downloader.cpp -o CMakeFiles\downloader_new.dir\downloader.cpp.s
 
 CMakeFiles/downloader_new.dir/get.cpp.obj: CMakeFiles/downloader_new.dir/flags.make
 CMakeFiles/downloader_new.dir/get.cpp.obj: CMakeFiles/downloader_new.dir/includes_CXX.rsp
 CMakeFiles/downloader_new.dir/get.cpp.obj: ../get.cpp
 CMakeFiles/downloader_new.dir/get.cpp.obj: CMakeFiles/downloader_new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\code\Qt\downloader_new\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/downloader_new.dir/get.cpp.obj"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/get.cpp.obj -MF CMakeFiles\downloader_new.dir\get.cpp.obj.d -o CMakeFiles\downloader_new.dir\get.cpp.obj -c E:\code\Qt\downloader_new\get.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/downloader_new.dir/get.cpp.obj"
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/get.cpp.obj -MF CMakeFiles\downloader_new.dir\get.cpp.obj.d -o CMakeFiles\downloader_new.dir\get.cpp.obj -c D:\qt\Qt-\Downloader_Ver2\core\get.cpp
 
 CMakeFiles/downloader_new.dir/get.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/downloader_new.dir/get.cpp.i"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\code\Qt\downloader_new\get.cpp > CMakeFiles\downloader_new.dir\get.cpp.i
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\qt\Qt-\Downloader_Ver2\core\get.cpp > CMakeFiles\downloader_new.dir\get.cpp.i
 
 CMakeFiles/downloader_new.dir/get.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/downloader_new.dir/get.cpp.s"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\code\Qt\downloader_new\get.cpp -o CMakeFiles\downloader_new.dir\get.cpp.s
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\qt\Qt-\Downloader_Ver2\core\get.cpp -o CMakeFiles\downloader_new.dir\get.cpp.s
 
 CMakeFiles/downloader_new.dir/main.cpp.obj: CMakeFiles/downloader_new.dir/flags.make
 CMakeFiles/downloader_new.dir/main.cpp.obj: CMakeFiles/downloader_new.dir/includes_CXX.rsp
 CMakeFiles/downloader_new.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/downloader_new.dir/main.cpp.obj: CMakeFiles/downloader_new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\code\Qt\downloader_new\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/downloader_new.dir/main.cpp.obj"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/main.cpp.obj -MF CMakeFiles\downloader_new.dir\main.cpp.obj.d -o CMakeFiles\downloader_new.dir\main.cpp.obj -c E:\code\Qt\downloader_new\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/downloader_new.dir/main.cpp.obj"
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/downloader_new.dir/main.cpp.obj -MF CMakeFiles\downloader_new.dir\main.cpp.obj.d -o CMakeFiles\downloader_new.dir\main.cpp.obj -c D:\qt\Qt-\Downloader_Ver2\core\main.cpp
 
 CMakeFiles/downloader_new.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/downloader_new.dir/main.cpp.i"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\code\Qt\downloader_new\main.cpp > CMakeFiles\downloader_new.dir\main.cpp.i
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\qt\Qt-\Downloader_Ver2\core\main.cpp > CMakeFiles\downloader_new.dir\main.cpp.i
 
 CMakeFiles/downloader_new.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/downloader_new.dir/main.cpp.s"
-	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\code\Qt\downloader_new\main.cpp -o CMakeFiles\downloader_new.dir\main.cpp.s
+	C:\msys64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\qt\Qt-\Downloader_Ver2\core\main.cpp -o CMakeFiles\downloader_new.dir\main.cpp.s
 
 # Object files for target downloader_new
 downloader_new_OBJECTS = \
@@ -151,7 +151,7 @@ downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Core.a
 downloader_new.exe: CMakeFiles/downloader_new.dir/linklibs.rsp
 downloader_new.exe: CMakeFiles/downloader_new.dir/objects1.rsp
 downloader_new.exe: CMakeFiles/downloader_new.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\code\Qt\downloader_new\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable downloader_new.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable downloader_new.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\downloader_new.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -163,6 +163,6 @@ CMakeFiles/downloader_new.dir/clean:
 .PHONY : CMakeFiles/downloader_new.dir/clean
 
 CMakeFiles/downloader_new.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\code\Qt\downloader_new E:\code\Qt\downloader_new E:\code\Qt\downloader_new\build E:\code\Qt\downloader_new\build E:\code\Qt\downloader_new\build\CMakeFiles\downloader_new.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\qt\Qt-\Downloader_Ver2\core D:\qt\Qt-\Downloader_Ver2\core D:\qt\Qt-\Downloader_Ver2\core\build D:\qt\Qt-\Downloader_Ver2\core\build D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles\downloader_new.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/downloader_new.dir/depend
 

@@ -7,6 +7,10 @@ set(CMAKE_DEPENDS_GENERATOR "MinGW Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+  "../CMakeLists.txt"
+  "CMakeFiles/3.21.1/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.21.1/CMakeRCCompiler.cmake"
+  "CMakeFiles/3.21.1/CMakeSystem.cmake"
   "E:/Qt/6.3.1/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake"
   "E:/Qt/6.3.1/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake"
   "E:/Qt/6.3.1/mingw_64/lib/cmake/Qt6/Qt6Config.cmake"
@@ -138,10 +142,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows-windres.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake"
-  "../CMakeLists.txt"
-  "CMakeFiles/3.21.1/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.21.1/CMakeRCCompiler.cmake"
-  "CMakeFiles/3.21.1/CMakeSystem.cmake"
   )
 
 # The corresponding makefile is:

@@ -1,5 +1,6 @@
 CMakeFiles/downloader_new.dir/get.cpp.obj: \
- E:\code\Qt\downloader_new\get.cpp E:\code\Qt\downloader_new\get.h \
+ D:\qt\Qt-\Downloader_Ver2\core\get.cpp \
+ D:\qt\Qt-\Downloader_Ver2\core\get.h \
  C:/msys64/mingw64/include/c++/10.3.0/iostream \
  C:/msys64/mingw64/include/c++/10.3.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/msys64/mingw64/include/c++/10.3.0/x86_64-w64-mingw32/bits/os_defines.h \
@@ -138,9 +139,10 @@ CMakeFiles/downloader_new.dir/get.cpp.obj: \
  C:/msys64/mingw64/include/c++/10.3.0/bits/ostream.tcc \
  C:/msys64/mingw64/include/c++/10.3.0/istream \
  C:/msys64/mingw64/include/c++/10.3.0/bits/istream.tcc \
- E:/Qt/6.3.1/mingw_64/include/QtCore/QString \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qstring.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qchar.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/QFile \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qfile.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qfiledevice.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qiodevice.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qglobal.h \
  C:/msys64/mingw64/include/c++/10.3.0/cstddef \
  C:/msys64/mingw64/include/c++/10.3.0/utility \
@@ -193,6 +195,14 @@ CMakeFiles/downloader_new.dir/get.cpp.obj: \
  C:/msys64/mingw64/include/c++/10.3.0/tr1/poly_laguerre.tcc \
  C:/msys64/mingw64/include/c++/10.3.0/tr1/riemann_zeta.tcc \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qversiontagging.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qiodevicebase.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qobject.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qobjectdefs.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qnamespace.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qtmetamacros.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qobjectdefs_impl.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qstring.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qchar.h \
  C:/msys64/mingw64/include/c++/10.3.0/functional \
  C:/msys64/mingw64/include/c++/10.3.0/bits/refwrap.h \
  C:/msys64/mingw64/include/c++/10.3.0/bits/std_function.h \
@@ -215,8 +225,6 @@ CMakeFiles/downloader_new.dir/get.cpp.obj: \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qstringview.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qbytearray.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qrefcount.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qnamespace.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qtmetamacros.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qarraydata.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qpair.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/string.h \
@@ -251,15 +259,6 @@ CMakeFiles/downloader_new.dir/get.cpp.obj: \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qanystringview.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qutf8stringview.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qstringtokenizer.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/QFile \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qfile.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qfiledevice.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qiodevice.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qiodevicebase.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qobject.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qobjectdefs.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qobjectdefs_impl.h \
- E:/Qt/6.3.1/mingw_64/include/QtCore/qstring.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qlist.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qhashfunctions.h \
  C:/msys64/mingw64/include/c++/10.3.0/numeric \
@@ -314,6 +313,8 @@ CMakeFiles/downloader_new.dir/get.cpp.obj: \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qmap.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qshareddata.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qshareddata_impl.h \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/QString \
+ E:/Qt/6.3.1/mingw_64/include/QtCore/qstring.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/QTextStream \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qtextstream.h \
  E:/Qt/6.3.1/mingw_64/include/QtCore/qstringconverter.h \

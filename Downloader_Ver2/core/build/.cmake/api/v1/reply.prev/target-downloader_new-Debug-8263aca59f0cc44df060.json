@@ -123,14 +123,14 @@
 			"includes" : 
 			[
 				{
-					"path" : "E:/code/Qt/downloader_new/build"
+					"path" : "D:/qt/Qt-/Downloader_Ver2/core/build"
 				},
 				{
-					"path" : "E:/code/Qt/downloader_new"
+					"path" : "D:/qt/Qt-/Downloader_Ver2/core"
 				},
 				{
 					"backtrace" : 0,
-					"path" : "E:/code/Qt/downloader_new/build/downloader_new_autogen/include"
+					"path" : "D:/qt/Qt-/Downloader_Ver2/core/build/downloader_new_autogen/include"
 				},
 				{
 					"backtrace" : 2,

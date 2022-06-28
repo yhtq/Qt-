@@ -1,15 +1,15 @@
 {
-	"BUILD_DIR" : "E:/code/Qt/downloader_new/build/downloader_new_autogen",
-	"CMAKE_BINARY_DIR" : "E:/code/Qt/downloader_new/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "E:/code/Qt/downloader_new/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "E:/code/Qt/downloader_new",
+	"BUILD_DIR" : "D:/qt/Qt-/Downloader_Ver2/core/build/downloader_new_autogen",
+	"CMAKE_BINARY_DIR" : "D:/qt/Qt-/Downloader_Ver2/core/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/qt/Qt-/Downloader_Ver2/core/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/qt/Qt-/Downloader_Ver2/core",
 	"CMAKE_EXECUTABLE" : "E:/Qt/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"E:/code/Qt/downloader_new/CMakeLists.txt",
-		"E:/code/Qt/downloader_new/build/CMakeFiles/3.21.1/CMakeSystem.cmake",
+		"D:/qt/Qt-/Downloader_Ver2/core/CMakeLists.txt",
+		"D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/3.21.1/CMakeSystem.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake",
-		"E:/code/Qt/downloader_new/build/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake",
+		"D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeGenericSystem.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake",
@@ -22,7 +22,7 @@
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake",
-		"E:/code/Qt/downloader_new/build/CMakeFiles/3.21.1/CMakeRCCompiler.cmake",
+		"D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/3.21.1/CMakeRCCompiler.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeRCInformation.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows-windres.cmake",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
@@ -395,27 +395,27 @@
 		"E:/Qt/6.3.1/mingw_64/lib/cmake/Qt6Core5Compat/Qt6Core5CompatAdditionalTargetInfo.cmake",
 		"E:/Qt/6.3.1/mingw_64/lib/cmake/Qt6Core5Compat/Qt6Core5CompatVersionlessTargets.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "E:/code/Qt/downloader_new",
+	"CMAKE_SOURCE_DIR" : "D:/qt/Qt-/Downloader_Ver2/core",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
 	"HEADERS" : 
 	[
 		[
-			"E:/code/Qt/downloader_new/downloader.h",
+			"D:/qt/Qt-/Downloader_Ver2/core/downloader.h",
 			"MU",
 			"EWIEGA46WW/moc_downloader.cpp",
 			null
 		],
 		[
-			"E:/code/Qt/downloader_new/get.h",
+			"D:/qt/Qt-/Downloader_Ver2/core/get.h",
 			"MU",
 			"EWIEGA46WW/moc_get.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "E:/code/Qt/downloader_new/build/downloader_new_autogen/include",
-	"MOC_COMPILATION_FILE" : "E:/code/Qt/downloader_new/build/downloader_new_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "D:/qt/Qt-/Downloader_Ver2/core/build/downloader_new_autogen/include",
+	"MOC_COMPILATION_FILE" : "D:/qt/Qt-/Downloader_Ver2/core/build/downloader_new_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"MINGW_HAS_SECURE_API=1",
@@ -440,8 +440,8 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"E:/code/Qt/downloader_new/build",
-		"E:/code/Qt/downloader_new",
+		"D:/qt/Qt-/Downloader_Ver2/core/build",
+		"D:/qt/Qt-/Downloader_Ver2/core",
 		"E:/Qt/6.3.1/mingw_64/include/QtCore5Compat",
 		"E:/Qt/6.3.1/mingw_64/include",
 		"E:/Qt/6.3.1/mingw_64/include/QtCore",
@@ -475,22 +475,22 @@
 		"-c",
 		"E:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "E:/code/Qt/downloader_new/build/downloader_new_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "D:/qt/Qt-/Downloader_Ver2/core/build/downloader_new_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "E:/code/Qt/downloader_new/build/CMakeFiles/downloader_new_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/downloader_new_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "E:/Qt/6.3.1/mingw_64/./bin/moc.exe",
 	"QT_UIC_EXECUTABLE" : "E:/Qt/6.3.1/mingw_64/./bin/uic.exe",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 3,
-	"SETTINGS_FILE" : "E:/code/Qt/downloader_new/build/CMakeFiles/downloader_new_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/downloader_new_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "E:/code/Qt/downloader_new/downloader.cpp", "MU", null ],
-		[ "E:/code/Qt/downloader_new/get.cpp", "MU", null ],
-		[ "E:/code/Qt/downloader_new/main.cpp", "MU", null ]
+		[ "D:/qt/Qt-/Downloader_Ver2/core/downloader.cpp", "MU", null ],
+		[ "D:/qt/Qt-/Downloader_Ver2/core/get.cpp", "MU", null ],
+		[ "D:/qt/Qt-/Downloader_Ver2/core/main.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

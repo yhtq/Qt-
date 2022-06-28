@@ -1,0 +1,22 @@
+[
+{
+  "directory": "D:/qt/Qt-/Downloader_Ver2/core/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/downloader_new.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\downloader_new.dir\\downloader_new_autogen\\mocs_compilation.cpp.obj -c D:\\qt\\Qt-\\Downloader_Ver2\\core\\build\\downloader_new_autogen\\mocs_compilation.cpp",
+  "file": "D:/qt/Qt-/Downloader_Ver2/core/build/downloader_new_autogen/mocs_compilation.cpp"
+},
+{
+  "directory": "D:/qt/Qt-/Downloader_Ver2/core/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/downloader_new.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\downloader_new.dir\\downloader.cpp.obj -c D:\\qt\\Qt-\\Downloader_Ver2\\core\\downloader.cpp",
+  "file": "D:/qt/Qt-/Downloader_Ver2/core/downloader.cpp"
+},
+{
+  "directory": "D:/qt/Qt-/Downloader_Ver2/core/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/downloader_new.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\downloader_new.dir\\get.cpp.obj -c D:\\qt\\Qt-\\Downloader_Ver2\\core\\get.cpp",
+  "file": "D:/qt/Qt-/Downloader_Ver2/core/get.cpp"
+},
+{
+  "directory": "D:/qt/Qt-/Downloader_Ver2/core/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/downloader_new.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\downloader_new.dir\\main.cpp.obj -c D:\\qt\\Qt-\\Downloader_Ver2\\core\\main.cpp",
+  "file": "D:/qt/Qt-/Downloader_Ver2/core/main.cpp"
+}
+]

@@ -52,10 +52,10 @@ RM = E:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\code\Qt\downloader_new
+CMAKE_SOURCE_DIR = D:\qt\Qt-\Downloader_Ver2\core
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\code\Qt\downloader_new\build
+CMAKE_BINARY_DIR = D:\qt\Qt-\Downloader_Ver2\core\build
 
 # Utility rule file for downloader_new_autogen.
 
@@ -66,8 +66,8 @@ include CMakeFiles/downloader_new_autogen.dir/compiler_depend.make
 include CMakeFiles/downloader_new_autogen.dir/progress.make
 
 CMakeFiles/downloader_new_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=E:\code\Qt\downloader_new\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target downloader_new"
-	E:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autogen E:/code/Qt/downloader_new/build/CMakeFiles/downloader_new_autogen.dir/AutogenInfo.json Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target downloader_new"
+	E:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autogen D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/downloader_new_autogen.dir/AutogenInfo.json Debug
 
 downloader_new_autogen: CMakeFiles/downloader_new_autogen
 downloader_new_autogen: CMakeFiles/downloader_new_autogen.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/downloader_new_autogen.dir/clean:
 .PHONY : CMakeFiles/downloader_new_autogen.dir/clean
 
 CMakeFiles/downloader_new_autogen.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\code\Qt\downloader_new E:\code\Qt\downloader_new E:\code\Qt\downloader_new\build E:\code\Qt\downloader_new\build E:\code\Qt\downloader_new\build\CMakeFiles\downloader_new_autogen.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\qt\Qt-\Downloader_Ver2\core D:\qt\Qt-\Downloader_Ver2\core D:\qt\Qt-\Downloader_Ver2\core\build D:\qt\Qt-\Downloader_Ver2\core\build D:\qt\Qt-\Downloader_Ver2\core\build\CMakeFiles\downloader_new_autogen.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/downloader_new_autogen.dir/depend
 

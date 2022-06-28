@@ -41,7 +41,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "downloader_new::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-downloader_new-Debug-b36927878aa647964092.json",
+					"jsonFile" : "target-downloader_new-Debug-8263aca59f0cc44df060.json",
 					"name" : "downloader_new",
 					"projectIndex" : 0
 				},
@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/code/Qt/downloader_new/build",
-		"source" : "E:/code/Qt/downloader_new"
+		"build" : "D:/qt/Qt-/Downloader_Ver2/core/build",
+		"source" : "D:/qt/Qt-/Downloader_Ver2/core"
 	},
 	"version" : 
 	{
