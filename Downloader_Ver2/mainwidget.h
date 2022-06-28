@@ -18,6 +18,7 @@
 #include <QFileDialog>
 #include <QListWidget>
 #include <QMessageBox>
+#include <Qmenu>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -39,6 +40,7 @@ public:
     void Init_ChildWidget2();
     void Init_DownloadCell();
     QListWidget *downloadCell;
+    QMenu *popMenu;
 
 protected:
     //拖拽窗口
@@ -55,5 +57,8 @@ private:
 
     QWidget *childWidget1, *childWidget2;
     QWidget *top, *sideBar;
+
+private slots:
+    void onCustomContextMenuRequested(QPoint);
 };
 #endif //  MAINWIDGET_H

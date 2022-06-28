@@ -254,6 +254,31 @@ void MainWidget::Init_DownloadCell()
     downloadCell -> setGeometry(256, 180, 772, 426);
     downloadCell -> setStyleSheet("background:rgb(255,255,255)");
     downloadCell -> setFrameShape(QListWidget::NoFrame);
+    downloadCell -> setSelectionMode(QAbstractItemView::MultiSelection);
+    // 右键菜单设置
+    downloadCell -> setProperty("contextMenuPolicy", Qt::CustomContextMenu);
+
+    popMenu = new QMenu(this);
+    connect(downloadCell, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomContextMenuRequested(QPoint)));
+
+    QAction *deleteElem = new QAction(tr("删除"));
+    popMenu -> addAction(deleteElem);
+    connect(deleteElem, &QAction::triggered, this, [=]{
+        QList<QListWidgetItem*> items = downloadCell -> selectedItems();
+        if (items.count() > 0)
+        {
+            // 弹出询问框
+            if (QMessageBox::Yes == QMessageBox::question(this, QStringLiteral("删除任务"),
+                QStringLiteral("确认删除%1项任务").arg(QString::number(items.count())), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+            {
+                foreach(QListWidgetItem* var, items) {
+                    downloadCell -> removeItemWidget(var);
+                    items.removeOne(var);
+                    delete var;
+                }
+            }
+        }
+    });
 }
 
 void MainWidget::Init_ChildWidget2()
@@ -261,6 +286,10 @@ void MainWidget::Init_ChildWidget2()
     childWidget2 = new QWidget(this);
     childWidget2->setGeometry(256,88,802,506);
     childWidget2->setStyleSheet("background:rgb(230,230,230)");
+}
+
+void MainWidget::onCustomContextMenuRequested(QPoint pos) {
+    popMenu -> exec(QCursor::pos());
 }
 
 //copy from https://www.cnblogs.com/MakeView660/p/10619334.html#:~:text=%E6%88%91%E4%BB%AC%E7%9F%A5%E9%81%93%EF%BC%8C%E8%A6%81%E5%AE%9E%E7%8E%B0,veEvent%E3%80%82
