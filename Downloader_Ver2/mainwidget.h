@@ -39,8 +39,6 @@ public:
     void Init_ChildWidget1();
     void Init_ChildWidget2();
     void Init_DownloadCell();
-    QListWidget *downloadCell;
-    QMenu *popMenu;
 
 protected:
     //拖拽窗口
@@ -57,6 +55,8 @@ private:
 
     QWidget *childWidget1, *childWidget2;
     QWidget *top, *sideBar;
+    QListWidget *downloadCell;
+    QMenu *popMenu;
 
 private slots:
     void onCustomContextMenuRequested(QPoint);
