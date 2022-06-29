@@ -42,7 +42,7 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
         qDebug() << result;
         return ;
     }
-    QObject::connect(&d, &Downloader::download_progress, [&d,&ele_progress_bar](int cur_byte, int last_byte) {
+    QObject::connect(&d, &Downloader::download_progress, [&d](int cur_byte, int last_byte) {
         int temp_time = time(0);
         static int cur_time = temp_time;
         static long long last = cur_byte;
@@ -50,13 +50,13 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
         {
             qDebug() << "当前1下载进度：" << cur_byte << "/" << d.getSize();
             //change the progress_bar
-            ele_progress_bar->onValueChanged((int)(cur_byte/d.getSize()));
-
             qDebug() << "当前1下载速度：" << (cur_byte - last) / 1024 / (temp_time - cur_time) << "KB/s";
             cur_time = temp_time;
             last = cur_byte;
         }
     });
+    double size = d.getSize();
+    QObject::connect(&d, &Downloader::download_progress, ele_progress_bar,[=](int cur, int last){ele_progress_bar->setValue(cur*100/size);});
     bool valid;
     QFuture<void>& future = d.start_download(valid);
     sync.addFuture(future);

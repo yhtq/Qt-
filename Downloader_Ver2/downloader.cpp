@@ -248,7 +248,6 @@ void Downloader::download()
             emit finish(1);
             QFile file(this->_file_name + ".tmp");
             file.rename(this->_file_name + ".mp4");
-            QFile::remove(this->_file_name + ".tmp");
             QFile::remove(this->_file_name + ".log");
         }
         else
