@@ -20,6 +20,7 @@ MainWidget::MainWidget(QWidget *parent)
     QWidget *divider = new QWidget(this);
     divider->setGeometry(1,31,1078,1);
     divider->setStyleSheet("background:rgb(245,245,245)");
+    menu_state = 0;
 }
 
 MainWidget::~MainWidget()
@@ -90,10 +91,20 @@ void MainWidget::Init_Top()
 
 void MainWidget::Init_SideBar()
 {
+    //菜单按钮
+    menu = new QPushButton(this);
+    menu->setGeometry(15,40,40,40);
+    menu->setStyleSheet(".QPushButton{background:rgb(255,255,255);border:0px;border-radius:4px}"
+                        "QPushButton::hover{background:rgb(240,240,240);border-radius:4px}"
+                        "QPushButton::pressed{background:rgb(230,230,230);border-radius:4px}");
+    QFrame *menu_icon = new QFrame(menu);
+    menu_icon->setGeometry(4,4,36,36);
+    menu_icon->setStyleSheet("background-image:url(:/Icon/MainWidget/SideBar/menu.png)");
+
     //侧栏
     sideBar = new QWidget(this);
     sideBar->setObjectName("sideBar");
-    sideBar->setGeometry(21,70,211,209);
+    sideBar->setGeometry(15,80,211,209);
     sideBar->setStyleSheet("#sideBar{background:rgb(255,255,255);border:1px solid rgb(235,235,235)}");
 
     //分割线
@@ -208,6 +219,20 @@ void MainWidget::Init_SideBar()
     connect(btn_set,&ToolWidget::Widget_mouseReleased,btn_set,[=]{
         btn_set->setStyleSheet("background:rgb(245,245,245)");
     });
+
+    //链接菜单按钮和侧栏
+    connect(menu,&QPushButton::clicked,this,[=]{
+        if(menu_state == 0)
+        {
+            menu_state = 1;
+            sideBar->close();
+        }
+        else
+        {
+            menu_state = 0;
+            sideBar->show();
+        }
+    });
 }
 
 void MainWidget::Init_ChildWidget1()
@@ -222,16 +247,16 @@ void MainWidget::Init_ChildWidget1()
 
     //分割线
 //    QWidget *divider1 = new QWidget(bar);
-//    divider1->setGeometry(0,0,802,1);
+//    divider1->setGeometry(0,0,1,61);
 //    divider1->setStyleSheet("background:rgb(205,205,205)");
     QWidget *divider2 = new QWidget(bar);
-    divider2->setGeometry(0,61,752,1);
+    divider2->setGeometry(0,61,762,1);
     divider2->setStyleSheet("background:rgb(205,205,205)");
 
     Line_Edit *search_bar = new Line_Edit(bar,0,4);
     //下载按钮
     QPushButton *down_load = new QPushButton(bar);
-    down_load->setGeometry(680,5,48,48);
+    down_load->setGeometry(710,5,48,48);
     down_load->setStyleSheet("QPushButton{background: rgb(245, 245, 245);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png);border-radius: 0px;border:1px solid rgb(235,235,235)}"
                              "QPushButton:hover{background: rgb(235, 235, 235);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png)}"
                              "QPushButton:pressed{background: rgb(225, 225, 225);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png);border:1px solid rgb(225,225,225)}");

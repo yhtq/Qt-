@@ -141,6 +141,7 @@ release/qrc_Resourse.cpp: ../Downloader_Ver2/Resourse.qrc \
 		../Downloader_Ver2/Icon/logo.png \
 		../Downloader_Ver2/Icon/MainWidget/SideBar/icon_set.png \
 		../Downloader_Ver2/Icon/MainWidget/SideBar/icon2.png \
+		../Downloader_Ver2/Icon/MainWidget/SideBar/menu.png \
 		../Downloader_Ver2/Icon/MainWidget/SideBar/icon1.png \
 		../Downloader_Ver2/Icon/MainWidget/SideBar/icon_help.png \
 		../Downloader_Ver2/Icon/MainWidget/ChildWidget1/Cell/ele_progress_bar.bmp \

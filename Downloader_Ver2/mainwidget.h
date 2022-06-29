@@ -57,6 +57,8 @@ private:
     QWidget *top, *sideBar;
     QListWidget *downloadCell;
     QMenu *popMenu;
+    QPushButton *menu;
+    bool menu_state;
 
 private slots:
     void onCustomContextMenuRequested(QPoint);
