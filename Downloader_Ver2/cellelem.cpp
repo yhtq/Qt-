@@ -1,4 +1,5 @@
 #include "cellelem.h"
+#include "QDebug"
 
 CellElem::CellElem(const QString &taskName, const QString &url, const QString &path, QListWidgetItem *item, QWidget *parent)
     : QWidget{parent},
@@ -31,4 +32,28 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
     ele_progress_bar -> setGeometry(470, 15, 220, 35);
 
     // do the download work here.
+    Downloader d("1oL4y1K7My", ".");
+    d.select_page("742385024");
+    d.get_accept_quality();
+    auto result = d.download_prepare("16");
+    if (result != "准备下载")
+    {
+        qDebug() << result;
+        return ;
+    }
+    QObject::connect(&d, &Downloader::download_progress, [&d,&ele_progress_bar](int cur_byte, int last_byte) {
+        int temp_time = time(0);
+        static int cur_time = temp_time;
+        static long long last = cur_byte;
+        if (temp_time - cur_time > 1)
+        {
+            qDebug() << "当前1下载进度：" << cur_byte << "/" << d.getSize();
+            //change the progress_bar
+            ele_progress_bar->onValueChanged((int)(cur_byte/d.getSize()));
+
+            qDebug() << "当前1下载速度：" << (cur_byte - last) / 1024 / (temp_time - cur_time) << "KB/s";
+            cur_time = temp_time;
+            last = cur_byte;
+        }
+    });
 }

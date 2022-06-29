@@ -5,6 +5,8 @@
 #include <QFrame>
 #include <QListWidgetItem>
 #include "progressbar.h"
+#include "downloader.h"
+#include "get.h"
 
 class CellElem : public QWidget
 {

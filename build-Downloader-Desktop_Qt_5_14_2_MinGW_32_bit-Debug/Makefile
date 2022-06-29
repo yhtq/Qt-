@@ -274,6 +274,8 @@ Makefile: ../Downloader_Ver2/Downloader.pro D:/Qt/QT_5.14.2/5.14.2/mingw73_32/mk
 		../Downloader_Ver2/Downloader.pro \
 		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Widgets.prl \
 		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Gui.prl \
+		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Concurrent.prl \
+		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Network.prl \
 		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Core.prl \
 		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/qtmain.prl \
 		D:/Qt/QT_5.14.2/5.14.2/mingw73_32/mkspecs/features/build_pass.prf \
@@ -483,6 +485,8 @@ D:/Qt/QT_5.14.2/5.14.2/mingw73_32/mkspecs/features/lex.prf:
 ../Downloader_Ver2/Downloader.pro:
 D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Widgets.prl:
 D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Gui.prl:
+D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Concurrent.prl:
+D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Network.prl:
 D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/Qt5Core.prl:
 D:/Qt/QT_5.14.2/5.14.2/mingw73_32/lib/qtmain.prl:
 D:/Qt/QT_5.14.2/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
