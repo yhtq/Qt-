@@ -44,7 +44,7 @@ QMap<QString, QString> Downloader::get_page_info()
         map[_i["cid"].toString()] = _i["part"].toString();
     }
     return map;
-    
+
 }
 void Downloader::select_page(const QString& cid)
 {
@@ -71,7 +71,7 @@ QVector<QString> Downloader::get_accept_quality()
     return accept_quality;
 }
 QString Downloader::download_prepare(const QString& quality)
-{   
+{
     if (accept_quality.indexOf(quality) == -1)
     {
         return "视频质量不可用";
@@ -197,7 +197,7 @@ Downloader::Downloader(const QString& log)
     has_prepared = true;
 
 }
-QFuture<void> Downloader::start_download(bool& valid)
+QFuture<void>& Downloader::start_download(bool& valid)
 {
     if (!has_prepared)
     {
@@ -316,4 +316,4 @@ Downloader::~Downloader()
         pause_download();
     }
 
-} 
+}

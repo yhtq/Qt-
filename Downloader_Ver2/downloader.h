@@ -43,7 +43,7 @@ public:
     void download_cover(const QString& cover_path) const; //下载封面（还没写）
     QVector<QString> get_accept_quality();    //得到支持的视频质量
     QString download_prepare(const QString& quality);    // 获得下载链接，请求头等信息,参数为清晰度,返回状态，执行前必须执行上面的函数确定可行质量
-    QFuture<void> start_download(bool& valid); //开始下载
+    QFuture<void>& start_download(bool& valid); //开始下载
     void pause_download(); //暂停下载
     //virtual QList<long long> download_progress(int cur_byte, int last_byte); //下载进度，建议继承按照需求重写”
     bool is_download() const; //是否正在下载
