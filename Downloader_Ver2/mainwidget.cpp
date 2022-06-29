@@ -264,7 +264,7 @@ void MainWidget::Init_DownloadCell()
     downloadCell -> setStyleSheet("QListWidget{background:rgb(255,255,255);outline:none;}"
                                   "QListWidget::item{background:rgb(250,250,250);outline:none;}");
     downloadCell -> setFrameShape(QListWidget::NoFrame);
-    downloadCell -> setSelectionMode(QAbstractItemView::MultiSelection);
+    downloadCell -> setSelectionMode(QAbstractItemView::SingleSelection);
     // 右键菜单设置
     downloadCell -> setProperty("contextMenuPolicy", Qt::CustomContextMenu);
 
