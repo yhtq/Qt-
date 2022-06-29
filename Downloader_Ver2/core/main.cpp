@@ -69,5 +69,6 @@ int main(int argc, char *argv[])
     sync.addFuture(future1);            //  多个下载任务用类似的方法addfuture实现
     sync.addFuture(future2);            
     sync.waitForFinished();             //  等待所有下载任务完成
+    d.save_as_audio();
     return a.exec();
 }

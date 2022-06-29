@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Downloader_t {
-    const uint offsetsAndSize[12];
-    char stringdata0[56];
+    const uint offsetsAndSize[14];
+    char stringdata0[63];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Downloader_t, stringdata0) + ofs), len 
@@ -35,11 +35,12 @@ QT_MOC_LITERAL(11, 17), // "download_progress"
 QT_MOC_LITERAL(29, 0), // ""
 QT_MOC_LITERAL(30, 8), // "cur_byte"
 QT_MOC_LITERAL(39, 9), // "last_byte"
-QT_MOC_LITERAL(49, 6) // "finish"
+QT_MOC_LITERAL(49, 6), // "finish"
+QT_MOC_LITERAL(56, 6) // "result"
 
     },
     "Downloader\0download_progress\0\0cur_byte\0"
-    "last_byte\0finish"
+    "last_byte\0finish\0result"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,11 +59,11 @@ static const uint qt_meta_data_Downloader[] = {
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
        1,    2,   26,    2, 0x06,    1 /* Public */,
-       5,    0,   31,    2, 0x06,    4 /* Public */,
+       5,    1,   31,    2, 0x06,    4 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    6,
 
        0        // eod
 };
@@ -74,7 +75,7 @@ void Downloader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         (void)_t;
         switch (_id) {
         case 0: _t->download_progress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 1: _t->finish(); break;
+        case 1: _t->finish((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -87,7 +88,7 @@ void Downloader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (Downloader::*)();
+            using _t = void (Downloader::*)(int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Downloader::finish)) {
                 *result = 1;
                 return;
@@ -103,7 +104,7 @@ const QMetaObject Downloader::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Downloader_t
-, QtPrivate::TypeAndForceComplete<Downloader, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<Downloader, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 
@@ -150,9 +151,10 @@ void Downloader::download_progress(int _t1, int _t2)
 }
 
 // SIGNAL 1
-void Downloader::finish()
+void Downloader::finish(int _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

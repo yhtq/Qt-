@@ -146,6 +146,7 @@ downloader_new.exe: CMakeFiles/downloader_new.dir/build.make
 downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Core5Compat.a
 downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Widgets.a
 downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Network.a
+downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Concurrent.a
 downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Gui.a
 downloader_new.exe: E:/Qt/6.3.1/mingw_64/lib/libQt6Core.a
 downloader_new.exe: CMakeFiles/downloader_new.dir/linklibs.rsp
