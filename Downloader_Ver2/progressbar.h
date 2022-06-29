@@ -15,7 +15,7 @@ class ProgressBar : public QWidget
     QLabel       progValue;
     QImage       progImage;
 
-protected slots:
+public:
     void  onValueChanged(int value);
 
 public slots:
