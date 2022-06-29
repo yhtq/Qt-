@@ -1,0 +1,17 @@
+release/cellelem.o
+release/closedialog.o
+release/downloader.o
+release/get.o
+release/helpdialog.o
+release/line_edit.o
+release/logindialog.o
+release/main.o
+release/mainwidget.o
+release/toolwidget.o
+release/progressbar.o
+release/qrc_Resourse.o
+release/moc_cellelem.o
+release/moc_downloader.o
+release/moc_mainwidget.o
+release/moc_toolwidget.o
+release/moc_progressbar.o

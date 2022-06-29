@@ -1,5 +1,3 @@
-#ifndef _GET_H
-#define _GET_H
 #include "get.h"
 
 Base_Get::Base_Get()
@@ -51,4 +49,3 @@ Get::Get(const QString& url, const QMap<QByteArray, QByteArray>* header):Base_Ge
 Get::~Get()
 {
 }
-#endif 

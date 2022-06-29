@@ -1,5 +1,3 @@
-#ifndef _DOWNLOADER_H
-#define _DOWNLOADER_H
 #include "get.h"
 #include "downloader.h"
 
@@ -24,16 +22,29 @@ bool Downloader::is_complete() const
 {
     return is_completed;
 }
-QJsonDocument Downloader::get_video_info() const
+QMap<QString, QString> Downloader::get_video_info() const
 {
     auto video_info = Get("https://api.bilibili.com/x/web-interface/view?bvid=" + bvid);
     QJsonDocument info = QJsonDocument::fromJson(video_info.getContent());
-    return info;
+    QMap<QString, QString> map;
+    map["title"] = info.object()["data"].toObject()["title"].toString();
+    map["desc"] = info.object()["data"].toObject()["desc"].toString();
+    map["owner"] = info.object()["data"].toObject()["owner"].toObject()["name"].toString();
+    return map;
 }
-QJsonArray Downloader::get_page_info()
+QMap<QString, QString> Downloader::get_page_info()
 {
     auto page_info = Get("https://api.bilibili.com/x/player/pagelist?bvid=" + this->bvid + "&qn=16&type=&otype=json").getContent();
-    return QJsonDocument::fromJson(page_info).object()["data"].toArray();
+    QMap<QString, QString> map;
+    QJsonDocument info = QJsonDocument::fromJson(page_info);
+    QJsonArray _data = info.object()["data"].toArray();
+    for (auto i : _data)
+    {
+        QJsonObject _i = i.toObject();
+        map[_i["cid"].toString()] = _i["part"].toString();
+    }
+    return map;
+    
 }
 void Downloader::select_page(const QString& cid)
 {
@@ -92,7 +103,7 @@ QString Downloader::download_prepare(const QString& quality)
         cur_progress = 0;
         pre_progress = 0;
     }
-    QFile log_file("./log/" + this->bvid + "_"+ this->cid +  "_" + quality + ".log");
+    QFile log_file("./" + this->bvid + "_"+ this->cid +  "_" + quality + ".log");
     if (!log_file.open(QIODevice::WriteOnly))
     {
         return "log文件打开失败";
@@ -230,15 +241,19 @@ void Downloader::download()
     {
         reply->deleteLater();
         manager->deleteLater();
-        emit finish();
         is_downloading = false;
         is_completed = true;
         if (cur_progress == size)
         {
+            emit finish(1);
             QFile file(this->_file_name + ".tmp");
             file.rename(this->_file_name + ".mp4");
             QFile::remove(this->_file_name + ".tmp");
             QFile::remove(this->_file_name + ".log");
+        }
+        else
+        {
+            emit finish(0);
         }
     });
     QEventLoop loop;
@@ -263,6 +278,19 @@ void Downloader::pause_download()
     manager->deleteLater();
 
 }
+QString Downloader::save_as_audio()
+{
+    // 调用ffmpeg将视频转换为音频
+    if (!is_completed)
+    {
+        return "未完成下载";
+    }
+    QStringList args;
+    args << "-i" << this->_file_name + ".mp4" << "-vn" << this->_file_name + ".wav";
+    QProcess::execute("ffmpeg", args);
+    QFile::remove(this->_file_name + ".mp4");
+    return "转换完成";
+}
 //QList<long long> Downloader::download_progress(int cur, int last)
 //{
 //    QList<long long> list;
@@ -280,5 +308,12 @@ void Downloader::delay(int ms)
     t.connect(&t, &QTimer::timeout, &loop, &QEventLoop::quit);
     t.start(ms);
     loop.exec();
+}
+Downloader::~Downloader()
+{
+    if (is_downloading)
+    {
+        pause_download();
+    }
+
 } 
-#endif // _DOWNLOADER_H

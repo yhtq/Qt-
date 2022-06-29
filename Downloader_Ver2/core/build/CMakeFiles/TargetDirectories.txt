@@ -1,4 +1,0 @@
-D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/downloader_new.dir
-D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/edit_cache.dir
-D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/rebuild_cache.dir
-D:/qt/Qt-/Downloader_Ver2/core/build/CMakeFiles/downloader_new_autogen.dir

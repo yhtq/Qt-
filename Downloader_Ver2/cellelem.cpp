@@ -56,4 +56,7 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
             last = cur_byte;
         }
     });
+    bool valid;
+    QFuture<void> future = d.start_download(valid);
+    future.waitForFinished();
 }

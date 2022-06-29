@@ -1,3 +1,5 @@
+#ifndef _GET_H
+#define _GET_H
 #include <iostream>
 #include <QFile>
 #include <QMap>
@@ -29,3 +31,4 @@ class Get: public Base_Get
         Get(const QString& url, const QMap<QByteArray, QByteArray>* header = nullptr);
         ~Get();
 };
+#endif // _GET_H
