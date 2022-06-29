@@ -15,5 +15,6 @@
         <file>Icon/MainWidget/ChildWidget1/SearchBar/text.png</file>
         <file>Icon/MainWidget/SideBar/icon_help.png</file>
         <file>Icon/MainWidget/SideBar/menu.png</file>
+        <file>Icon/folder.svg</file>
     </qresource>
 </RCC>

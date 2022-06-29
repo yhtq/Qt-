@@ -28,7 +28,9 @@ SOURCES += \
     main.cpp \
     mainwidget.cpp \
     toolwidget.cpp \
-    progressbar.cpp
+    progressbar.cpp \
+    downloaddialog1.cpp \
+    downloaddialog2.cpp
 
 HEADERS += \
     cellelem.h \
@@ -40,7 +42,9 @@ HEADERS += \
     logindialog.h \
     mainwidget.h \
     toolwidget.h \
-    progressbar.h
+    progressbar.h \
+    downloaddialog1.h \
+    downloaddialog2.h
 
 FORMS += \
     mainwidget.ui
