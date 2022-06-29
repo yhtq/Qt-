@@ -6,6 +6,7 @@ DownloadDialog1::DownloadDialog1(QStringList parts, QWidget *parent) :
     this->resize(400, 360);
     this->setWindowTitle("请选择下载分p");
     this->setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
+    this->setWindowIcon(QIcon(":/Icon/logo.png"));
     partList = new QListWidget(this);
     partList->setGeometry(20, 20, 360, 280);
 
