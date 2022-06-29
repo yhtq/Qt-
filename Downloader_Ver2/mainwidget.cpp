@@ -244,9 +244,16 @@ void MainWidget::Init_ChildWidget1()
         }
 
         QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
+        QWidget *box = new QWidget;
+        box->resize(800,70);
         CellElem *ele = new CellElem("task name", url, path, item, downloadCell);
+        ele->setParent(box);
+        QWidget *blank = new QWidget(box);
+        blank->setGeometry(775,0,30,70);
+        blank->setStyleSheet("background:rgb(255,255,255)");
+
         item -> setSizeHint(QSize(752, 70));
-        downloadCell -> setItemWidget(item, ele);
+        downloadCell -> setItemWidget(item, box);
     });
 }
 
@@ -254,7 +261,8 @@ void MainWidget::Init_DownloadCell()
 {
     downloadCell = new QListWidget(childWidget1);
     downloadCell -> setGeometry(0, 80, 800, 426);
-    downloadCell -> setStyleSheet("background:rgb(255,255,255)");
+    downloadCell -> setStyleSheet("QListWidget{background:rgb(255,255,255);outline:none;}"
+                                  "QListWidget::item{background:rgb(250,250,250);outline:none;}");
     downloadCell -> setFrameShape(QListWidget::NoFrame);
     downloadCell -> setSelectionMode(QAbstractItemView::MultiSelection);
     // 右键菜单设置
