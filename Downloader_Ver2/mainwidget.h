@@ -18,7 +18,9 @@
 #include <QFileDialog>
 #include <QListWidget>
 #include <QMessageBox>
-#include <Qmenu>
+#include <QMenu>
+#include "downloader.h"
+#include "get.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }

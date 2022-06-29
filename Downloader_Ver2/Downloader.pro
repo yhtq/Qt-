@@ -1,8 +1,10 @@
 QT       += core gui
+QT += concurrent widgets
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -18,6 +20,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cellelem.cpp \
     closedialog.cpp \
+    downloader.cpp \
+    get.cpp \
     helpdialog.cpp \
     line_edit.cpp \
     logindialog.cpp \
@@ -29,6 +33,8 @@ SOURCES += \
 HEADERS += \
     cellelem.h \
     closedialog.h \
+    downloader.h \
+    get.h \
     helpdialog.h \
     line_edit.h \
     logindialog.h \

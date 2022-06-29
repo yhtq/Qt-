@@ -1,5 +1,7 @@
 debug/cellelem.o
 debug/closedialog.o
+debug/downloader.o
+debug/get.o
 debug/helpdialog.o
 debug/line_edit.o
 debug/logindialog.o
@@ -9,6 +11,7 @@ debug/toolwidget.o
 debug/progressbar.o
 debug/qrc_Resourse.o
 debug/moc_cellelem.o
+debug/moc_downloader.o
 debug/moc_mainwidget.o
 debug/moc_toolwidget.o
 debug/moc_progressbar.o
