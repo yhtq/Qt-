@@ -5,12 +5,14 @@
 #include <QDialog>
 #include <QObject>
 #include <QWidget>
+#include <QComboBox>
 
 class DownloadDialog2 : public QDialog
 {
     Q_OBJECT
 
     QLabel *pathLabel;
+    QComboBox *qnComboBox;
 public:
     DownloadDialog2(QWidget *parent = nullptr);
 

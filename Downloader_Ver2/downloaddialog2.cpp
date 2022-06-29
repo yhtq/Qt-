@@ -29,7 +29,7 @@ DownloadDialog2::DownloadDialog2(QWidget *parent) :
     auto qnLayout = new QHBoxLayout;
     qnLayout->addWidget(new QLabel("画质："));
 
-    QComboBox *qnComboBox = new QComboBox;
+    qnComboBox = new QComboBox;
     qnComboBox->setFocusPolicy(Qt::NoFocus);
     qnComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     auto qnTipLabel = new QLabel;
