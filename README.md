@@ -8,3 +8,5 @@
 https://disk.pku.edu.cn:443/link/1A0C7F4C6BDB7EC22A6C256D4208D803
 
 密码：LNBH
+
+成功下载需要在与可执行文件同级目录下放ffmpeg.exe
