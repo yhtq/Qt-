@@ -104,7 +104,7 @@ QString Downloader::download_prepare(const QString& quality)
         cur_progress = 0;
         pre_progress = 0;
     }
-    QFile log_file("./" + this->bvid + "_"+ this->cid +  "_" + quality + ".log");
+    QFile log_file(this->file_path + "/" + this->bvid + "_"+ this->cid + "_" + quality + ".log");
     if (!log_file.open(QIODevice::WriteOnly))
     {
         return "log文件打开失败";
@@ -225,7 +225,7 @@ void Downloader::download()
     }
     manager = new QNetworkAccessManager();
     reply = manager->get(request);
-    QObject::connect(reply, &QNetworkReply::readyRead, [=]()
+    QObject::connect(reply, &QNetworkReply::readyRead, this,[=]()
     {
         QFile file(this->_file_name + ".tmp");
         if (!file.open(QIODevice::Append))
@@ -238,7 +238,7 @@ void Downloader::download()
         file.write(reply->readAll());
         file.close();
     });
-    QObject::connect(reply, &QNetworkReply::finished, [=]()
+    QObject::connect(reply, &QNetworkReply::finished, this,[=]()
     {
         reply->deleteLater();
         manager->deleteLater();
@@ -249,7 +249,9 @@ void Downloader::download()
             emit finish(1);
             QFile file(this->_file_name + ".tmp");
             file.rename(this->_file_name + ".mp4");
-            QFile::remove(this->_file_name + ".log");
+            QFile log_file(this->_file_name + ".log");
+            log_file.setPermissions(QFileDevice::WriteUser | QFileDevice::ReadUser | QFileDevice::ExeUser);
+            log_file.remove();
         }
         else
         {
