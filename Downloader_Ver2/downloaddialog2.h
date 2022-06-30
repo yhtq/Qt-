@@ -16,6 +16,8 @@ class DownloadDialog2 : public QDialog
 public:
     DownloadDialog2(QVector<QString> qualities, QString default_path, QWidget *parent = nullptr);
 
+    QString Get_Choose_Quality();
+
 private slots:
     void selectPath();
     void startGetCurrentItemQnList();

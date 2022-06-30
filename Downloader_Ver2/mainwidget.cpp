@@ -309,48 +309,59 @@ void MainWidget::Init_ChildWidget1()
 
             if(dialog1_result == DownloadDialog1::Accepted)
             {
-                d.select_page(allKeys[0]);
+                QList<QListWidgetItem*> choose_page = dialog1->selectedItems();
+                qDebug() << choose_page.size();
 
-                QVector<QString> info_quality = d.get_accept_quality();
-                //qDebug() << info_quality.size();
-
-                DownloadDialog2 *dialog2 = new DownloadDialog2(info_quality, default_path, this);
-                dialog2_result = dialog2->exec();
-
-                if(dialog2_result == DownloadDialog2::Accepted)
+                if(choose_page.size()!=0)
                 {
-                    prepare_result = d.download_prepare(info_quality[0]);
+                    QString download_page = choose_page[0]->text();
+                    qDebug() << download_page;
+                    d.select_page(info_page.key(download_page));
 
-                    qDebug() << prepare_result;
-                    //prepare_result = "视频已存在";
+                    QVector<QString> info_quality = d.get_accept_quality();
+                    //qDebug() << info_quality.size();
 
-                    if(prepare_result == "准备下载")
+                    DownloadDialog2 *dialog2 = new DownloadDialog2(info_quality, default_path, this);
+                    dialog2_result = dialog2->exec();
+
+                    if(dialog2_result == DownloadDialog2::Accepted)
                     {
-                        QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
-                        QWidget *box = new QWidget;
-                        box->resize(800,70);
-                        CellElem *ele = new CellElem("task name", d, item, downloadCell);
-                        ele->setParent(box);
-                        QWidget *blank = new QWidget(box);
-                        blank->setGeometry(775,0,30,70);
-                        blank->setStyleSheet("background:rgb(255,255,255)");
+                        QString download_quality = dialog2->Get_Choose_Quality();
+                        qDebug() << download_quality;
+                        prepare_result = d.download_prepare(download_quality);
 
-                        item -> setSizeHint(QSize(752, 70));
-                        downloadCell -> setItemWidget(item, box);
+                        qDebug() << prepare_result;
+                        //prepare_result = "视频已存在";
 
-                        connect(ele,&CellElem::finished,downloadCell,[=]{
-                            downloadCell->removeItemWidget(item);
-                        });
-                    }
-                    else
-                    {
-                        QMessageBox *warning = new QMessageBox(QMessageBox::NoIcon, "下载错误", prepare_result);
-                        warning->setStyleSheet("QLabel{min-width: 120px;min-height: 50px}");
-                        QString message = "<p align='center'>";
-                        message.append(prepare_result);
-                        message.append("</p >");
-                        warning->setText(message);
-                        warning->exec();
+                        if(prepare_result == "准备下载")
+                        {
+                            QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
+                            QWidget *box = new QWidget;
+                            box->resize(800,70);
+                            CellElem *ele = new CellElem(download_page, d, item, downloadCell);
+                            ele->setParent(box);
+                            QWidget *blank = new QWidget(box);
+                            blank->setGeometry(775,0,30,70);
+                            blank->setStyleSheet("background:rgb(255,255,255)");
+
+                            item -> setSizeHint(QSize(752, 70));
+                            downloadCell -> setItemWidget(item, box);
+
+                            connect(ele,&CellElem::finished,downloadCell,[=]{
+                                downloadCell->removeItemWidget(item);
+                                delete item;
+                            });
+                        }
+                        else
+                        {
+                            QMessageBox *warning = new QMessageBox(QMessageBox::NoIcon, "下载错误", prepare_result);
+                            warning->setStyleSheet("QLabel{min-width: 120px;min-height: 50px}");
+                            QString message = "<p align='center'>";
+                            message.append(prepare_result);
+                            message.append("</p >");
+                            warning->setText(message);
+                            warning->exec();
+                        }
                     }
                 }
             }
@@ -368,7 +379,9 @@ void MainWidget::Init_ChildWidget1()
 
             if(dialog2_result == DownloadDialog2::Accepted)
             {
-                prepare_result = d.download_prepare(info_quality[0]);
+                QString download_quality = dialog2->Get_Choose_Quality();
+                qDebug() << download_quality;
+                prepare_result = d.download_prepare(download_quality);
 
                 qDebug() << prepare_result;
                 //prepare_result = "视频已存在";
@@ -378,7 +391,7 @@ void MainWidget::Init_ChildWidget1()
                     QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
                     QWidget *box = new QWidget;
                     box->resize(800,70);
-                    CellElem *ele = new CellElem("task name", d, item, downloadCell);
+                    CellElem *ele = new CellElem(allValues[0], d, item, downloadCell);
                     ele->setParent(box);
                     QWidget *blank = new QWidget(box);
                     blank->setGeometry(775,0,30,70);
@@ -389,6 +402,7 @@ void MainWidget::Init_ChildWidget1()
 
                     connect(ele,&CellElem::finished,downloadCell,[=]{
                         downloadCell->removeItemWidget(item);
+                        delete item;
                     });
                 }
                 else

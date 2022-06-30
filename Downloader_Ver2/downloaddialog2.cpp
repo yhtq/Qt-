@@ -108,3 +108,8 @@ void DownloadDialog2::selectPath()
 void DownloadDialog2::startGetCurrentItemQnList() {
 
 }
+
+QString DownloadDialog2::Get_Choose_Quality()
+{
+    return qnComboBox->currentText();
+}
