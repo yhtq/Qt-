@@ -24,7 +24,7 @@ void HelpDialog::Init_Dialog()
                             "border-width:0;border-style:outset");
     help_txt->setText("操作流程：\n"
                       "1:在Setting里确认默认下载地址\n"
-                      "2:获取需下载视频的bv号\n"
+                      "2:获取需下载视频的bv号,在输入框内输入(不带前缀)\n"
                       "3:选择分p(如果多p)和清晰度(高清晰度可能需要会员而导致下载失败)");
     help_txt->setReadOnly(true);
 }

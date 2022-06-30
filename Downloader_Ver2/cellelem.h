@@ -16,7 +16,7 @@ public:
     QString m_taskName;
 
 signals:
-    void finished();
+    void finished(int result);
 };
 
 #endif // CELLELEM_H

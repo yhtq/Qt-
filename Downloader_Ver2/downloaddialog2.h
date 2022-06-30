@@ -17,6 +17,7 @@ public:
     DownloadDialog2(QMap<QString, QString> qualities, QString default_path, QWidget *parent = nullptr);
 
     QString Get_Choose_Quality();
+    QString Get_Choose_Path();
 
 private slots:
     void selectPath();

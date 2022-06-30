@@ -52,6 +52,10 @@ public:
     long long getSize() const;
     QString save_as_audio();
     ~Downloader();
+
+    //可能出错
+    void change_path(const QString &path);
+
 signals:
     void download_progress(int cur_byte, int last_byte);
     void finish(int result);

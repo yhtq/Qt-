@@ -124,3 +124,8 @@ QString DownloadDialog2::Get_Choose_Quality()
 {
     return qnComboBox->currentText();
 }
+
+QString DownloadDialog2::Get_Choose_Path()
+{
+    return pathLabel->text();
+}

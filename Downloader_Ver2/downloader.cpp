@@ -317,6 +317,11 @@ void Downloader::delay(int ms)
     t.start(ms);
     loop.exec();
 }
+void Downloader::change_path(const QString &path)
+{
+    has_prepared = false;
+    file_path = path;
+}
 Downloader::~Downloader()
 {
     if (is_downloading)

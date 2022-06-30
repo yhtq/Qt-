@@ -316,8 +316,6 @@ void MainWidget::Init_ChildWidget1()
     connect(down_load, &QToolButton::clicked, this, [=]{
         QString url = search_bar -> line_edit ->text();
         QString path = default_path;
-        //url = "1oL4y1K7My";
-        url = "1ns411D7W1";
 
         auto d_p =  new Downloader(url, path);
         auto& d = *d_p;
@@ -370,6 +368,11 @@ void MainWidget::Init_ChildWidget1()
                     {
                         QString download_quality = dialog2->Get_Choose_Quality();
                         //qDebug() << download_quality;
+
+                        QString download_path = dialog2->Get_Choose_Path();
+                        qDebug() << download_path;
+                        d.change_path(download_path);
+
                         prepare_result = d.download_prepare(info_quality.key(download_quality));
 
                         //qDebug() << prepare_result;
@@ -389,7 +392,17 @@ void MainWidget::Init_ChildWidget1()
                             item -> setSizeHint(QSize(752, 70));
                             downloadCell -> setItemWidget(item, box);
 
-                            connect(ele,&CellElem::finished,downloadCell,[=]{
+                            connect(ele,&CellElem::finished,downloadCell,[=](int result){
+                                if(result == 0)
+                                {
+                                    QMessageBox *warning = new QMessageBox(QMessageBox::NoIcon, "下载错误", prepare_result);
+                                    warning->setStyleSheet("QLabel{min-width: 120px;min-height: 50px}");
+                                    QString message = "<p align='center'>";
+                                    message.append("下载失败");
+                                    message.append("</p >");
+                                    warning->setText(message);
+                                    warning->exec();
+                                }
                                 downloadCell->removeItemWidget(item);
                                 delete item;
                             });
@@ -423,6 +436,10 @@ void MainWidget::Init_ChildWidget1()
             {
                 QString download_quality = dialog2->Get_Choose_Quality();
                 //qDebug() << download_quality;
+
+                QString download_path = dialog2->Get_Choose_Path();
+                d.change_path(download_path);
+
                 prepare_result = d.download_prepare(info_quality.key(download_quality));
 
                 //qDebug() << prepare_result;
@@ -442,7 +459,17 @@ void MainWidget::Init_ChildWidget1()
                     item -> setSizeHint(QSize(752, 70));
                     downloadCell -> setItemWidget(item, box);
 
-                    connect(ele,&CellElem::finished,downloadCell,[=]{
+                    connect(ele,&CellElem::finished,downloadCell,[=](int result){
+                        if(result == 0)
+                        {
+                            QMessageBox *warning = new QMessageBox(QMessageBox::NoIcon, "下载错误", prepare_result);
+                            warning->setStyleSheet("QLabel{min-width: 120px;min-height: 50px}");
+                            QString message = "<p align='center'>";
+                            message.append("下载失败");
+                            message.append("</p >");
+                            warning->setText(message);
+                            warning->exec();
+                        }
                         downloadCell->removeItemWidget(item);
                         delete item;
                     });

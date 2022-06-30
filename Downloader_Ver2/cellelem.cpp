@@ -31,26 +31,28 @@ CellElem::CellElem(const QString &taskName, Downloader &d, QListWidgetItem *item
     ProgressBar *ele_progress_bar = new ProgressBar(":/Icon/MainWidget/ChildWidget1/Cell/ele_progress_bar.bmp", this);
     ele_progress_bar -> setGeometry(470, 15, 220, 35);
 
+    QLabel *download_rate = new QLabel(this);
+    download_rate->setGeometry(400,22,70,20);
+    download_rate->setText(QString("0 KB/s"));
+    download_rate->setStyleSheet("position: absolute;color: rgb(80, 80, 80);"
+                                 "font-family: 微软雅黑;font-size: 12px;font-weight: 400;"
+                                 "line-height: 20px;text-align: left");
+
     // do the download work here.
-    //auto d_p =  new Downloader(url, path);
-    //auto& d = *d_p;
-    //d.select_page("742385024");
-    //d.get_accept_quality();
-//    auto result = d.download_prepare("16");
-//    if (result != "准备下载")
-//    {
-//        qDebug() << result;
-//        return ;
-//    }
-    QObject::connect(&d, &Downloader::download_progress, [&d](int cur_byte, int last_byte) {
+    QObject::connect(&d, &Downloader::download_progress, download_rate, [=,&d](int cur_byte, int last_byte) {
         int temp_time = time(0);
         static int cur_time = temp_time;
         static long long last = cur_byte;
         if (temp_time - cur_time > 1)
         {
-            qDebug() << "当前1下载进度：" << cur_byte << "/" << d.getSize();
-            //change the progress_bar
-            qDebug() << "当前1下载速度：" << (cur_byte - last) / 1024 / (temp_time - cur_time) << "KB/s";
+            //qDebug() << "当前1下载进度：" << cur_byte << "/" << d.getSize();
+            //qDebug() << "当前1下载速度：" << (cur_byte - last) / 1024 / (temp_time - cur_time) << "KB/s";
+
+            int rate = (cur_byte - last) / 1024 / (temp_time - cur_time);
+            QString c_rate = QString::number(rate);
+            c_rate.append(" KB/s");
+            download_rate->setText(c_rate);
+
             cur_time = temp_time;
             last = cur_byte;
         }
