@@ -34,6 +34,7 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
     // do the download work here.
     auto d_p =  new Downloader("1oL4y1K7My", ".");
     auto& d = *d_p;
+    d.get_page_info();
     d.select_page("742385024");
     d.get_accept_quality();
     auto result = d.download_prepare("16");
