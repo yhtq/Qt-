@@ -59,17 +59,20 @@ void Downloader::select_page(const QString& cid)
     this->info = QJsonDocument::fromJson(res.getContent());
 
 }
-QVector<QString> Downloader::get_accept_quality()
+QMap<QString, QString> Downloader::get_accept_quality()
 {
     QJsonObject jsonObject = info.object();
     QJsonArray jsonArray = jsonObject["data"].toObject()["accept_quality"].toArray();
+    QJsonArray descprtion = jsonObject["data"].toObject()["accept_description"].toArray();
+    QMap<QString, QString> result;
     for (int i = 0; i < jsonArray.size(); i++)
     {
         int quality = jsonArray.at(i).toDouble();
         this->accept_quality.push_back(QString::number(quality));
+        result[QString::number(quality)] = descprtion.at(i).toString();
         std::string s = QString::number(quality).toStdString();
     }
-    return accept_quality;
+    return result;
 }
 QString Downloader::download_prepare(const QString& quality)
 {

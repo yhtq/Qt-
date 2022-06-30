@@ -41,7 +41,7 @@ public:
     QMap<QString, QString> get_page_info(); //得到分p信息，内容是一个map，key为cid，value为分p标题
     void select_page(const QString& cid); //选择分p,输入cid不含前缀
     void download_cover(const QString& cover_path) const; //下载封面（还没写）
-    QVector<QString> get_accept_quality();    //得到支持的视频质量
+    QMap<QString, QString> get_accept_quality();    //得到支持的视频质量
     QString download_prepare(const QString& quality);    // 获得下载链接，请求头等信息,参数为清晰度,返回状态，执行前必须执行上面的函数确定可行质量
     QFuture<void>& start_download(bool& valid); //开始下载
     void pause_download(); //暂停下载
