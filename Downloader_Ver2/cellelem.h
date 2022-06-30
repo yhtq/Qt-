@@ -12,11 +12,11 @@ class CellElem : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CellElem(const QString &, const QString &, const QString &, QListWidgetItem *item, QWidget *parent = nullptr);
+    explicit CellElem(const QString &, Downloader &, QListWidgetItem *item, QWidget *parent = nullptr);
     QString m_taskName;
 
 signals:
-
+    void finished();
 };
 
 #endif // CELLELEM_H

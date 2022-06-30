@@ -21,6 +21,9 @@
 #include <QMenu>
 #include "downloader.h"
 #include "get.h"
+#include "QMap"
+#include "downloaddialog1.h"
+#include "downloaddialog2.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -41,6 +44,8 @@ public:
     void Init_ChildWidget1();
     void Init_ChildWidget2();
     void Init_DownloadCell();
+
+    QString default_path;
 
 protected:
     //拖拽窗口
