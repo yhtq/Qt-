@@ -255,9 +255,14 @@ void MainWidget::Init_SideBar()
                                  "font-family: 微软雅黑;font-size: 14px;font-weight: 450;"
                                  "line-height: 20px;text-align: left");
 
+        QFont font = this->font();
+        font.setPointSize(11);
+        font.setFamily("微软雅黑");
+
         QPushButton *get_path = new QPushButton(setting_dialog);
         get_path->setGeometry(380,30,60,30);
         get_path->setText(QString("File"));
+        get_path->setFont(font);
         get_path->setStyleSheet("QPushButton{background: rgb(245, 245, 245);border-radius: 0px;border:1px solid rgb(205,205,205)}"
                                 "QPushButton:hover{background: rgb(235, 235, 235)}"
                                 "QPushButton:pressed{background: rgb(225, 225, 225);border:1px solid rgb(225,225,225)}");
@@ -271,6 +276,7 @@ void MainWidget::Init_SideBar()
         QPushButton *save = new QPushButton(setting_dialog);
         save->setGeometry(440,30,60,30);
         save->setText(QString("Save"));
+        save->setFont(font);
         save->setStyleSheet("QPushButton{background: rgb(245, 245, 245);border-radius: 0px;border:1px solid rgb(205,205,205)}"
                             "QPushButton:hover{background: rgb(235, 235, 235)}"
                             "QPushButton:pressed{background: rgb(225, 225, 225);border:1px solid rgb(225,225,225)}");
@@ -315,23 +321,22 @@ void MainWidget::Init_ChildWidget1()
 
         auto d_p =  new Downloader(url, path);
         auto& d = *d_p;
-        //d.select_page("742385024");
 
         QMap<QString, QString> info_video = d.get_video_info();
         QMap<QString, QString> info_page = d.get_page_info();
 
         //这是按顺序的嘛
         QList<QString> allKeys = info_page.keys();
-        qDebug() << allKeys.size();
+        //qDebug() << allKeys.size();
         QList<QString> allValues = info_page.values();
-        qDebug() << allValues.size();
+        //qDebug() << allValues.size();
 
         QStringList pages;
         QMap<QString, QString> map;
         for(int i=0; i < info_page.size(); i++)
         {
-            qDebug() << allValues[i];
-            qDebug() << info_page.key(allValues[i]);
+            //qDebug() << allValues[i];
+            //qDebug() << info_page.key(allValues[i]);
             pages << allValues[i];
             map[allValues[i]] = allKeys[i];
         }
@@ -347,12 +352,12 @@ void MainWidget::Init_ChildWidget1()
             if(dialog1_result == DownloadDialog1::Accepted)
             {
                 QList<QListWidgetItem*> choose_page = dialog1->selectedItems();
-                qDebug() << choose_page.size();
+                //qDebug() << choose_page.size();
 
                 if(choose_page.size()!=0)
                 {
                     QString download_page = choose_page[0]->text();
-                    qDebug() << download_page;
+                    //qDebug() << download_page;
                     d.select_page(info_page.key(download_page));
 
                     QMap<QString,QString> info_quality = d.get_accept_quality();
@@ -364,10 +369,10 @@ void MainWidget::Init_ChildWidget1()
                     if(dialog2_result == DownloadDialog2::Accepted)
                     {
                         QString download_quality = dialog2->Get_Choose_Quality();
-                        qDebug() << download_quality;
+                        //qDebug() << download_quality;
                         prepare_result = d.download_prepare(info_quality.key(download_quality));
 
-                        qDebug() << prepare_result;
+                        //qDebug() << prepare_result;
                         //prepare_result = "视频已存在";
 
                         if(prepare_result == "准备下载")
@@ -406,7 +411,7 @@ void MainWidget::Init_ChildWidget1()
         else
         {
             d.select_page(allKeys[0]);
-            qDebug() << allKeys[0];
+            //qDebug() << allKeys[0];
 
             QMap<QString,QString> info_quality = d.get_accept_quality();
             //qDebug() << info_quality.size();
@@ -417,10 +422,10 @@ void MainWidget::Init_ChildWidget1()
             if(dialog2_result == DownloadDialog2::Accepted)
             {
                 QString download_quality = dialog2->Get_Choose_Quality();
-                qDebug() << download_quality;
+                //qDebug() << download_quality;
                 prepare_result = d.download_prepare(info_quality.key(download_quality));
 
-                qDebug() << prepare_result;
+                //qDebug() << prepare_result;
                 //prepare_result = "视频已存在";
 
                 if(prepare_result == "准备下载")
@@ -497,13 +502,13 @@ void MainWidget::Init_ChildWidget2()
 {
     childWidget2 = new QWidget(this);
     childWidget2->setGeometry(256,70,802,506);
-    childWidget2->setStyleSheet("background:rgb(230,230,230)");
+    childWidget2->setStyleSheet("background:rgb(240,240,240)");
 
     QLabel *text = new QLabel(childWidget2);
     text->setGeometry(320,150,200,100);
     text->setText(QString("功能暂未开放"));
-    text->setStyleSheet("position: absolute;color: rgb(100, 100, 100);"
-                        "font-family: 微软雅黑;font-size: 30px;font-weight: 400;"
+    text->setStyleSheet("position: absolute;color: rgb(80, 80, 80);"
+                        "font-family: 微软雅黑;font-size: 30px;font-weight: 500;"
                         "line-height: 20px;text-align: left");
 }
 

@@ -97,6 +97,15 @@ DownloadDialog2::DownloadDialog2(QMap<QString, QString> qualities, QString defau
     connect(okButton, &QPushButton::clicked, this, &DownloadDialog2::accept);
     connect(cancelButton, &QPushButton::clicked, this, &DownloadDialog2::reject);
     connect(selPathButton, &QAbstractButton::clicked, this, &DownloadDialog2::selectPath);
+
+    QFont font = this->font();
+    font.setPointSize(12);
+    font.setFamily("微软雅黑");
+    auto listWidget = findChildren<QWidget*>();
+    for (auto& widget : listWidget)
+    {
+        widget->setFont(font);
+    }
 }
 
 void DownloadDialog2::selectPath()
