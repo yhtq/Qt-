@@ -34,14 +34,14 @@ CellElem::CellElem(const QString &taskName, Downloader &d, QListWidgetItem *item
     // do the download work here.
     //auto d_p =  new Downloader(url, path);
     //auto& d = *d_p;
-    d.select_page("742385024");
-    d.get_accept_quality();
-    auto result = d.download_prepare("16");
-    if (result != "准备下载")
-    {
-        qDebug() << result;
-        return ;
-    }
+    //d.select_page("742385024");
+    //d.get_accept_quality();
+//    auto result = d.download_prepare("16");
+//    if (result != "准备下载")
+//    {
+//        qDebug() << result;
+//        return ;
+//    }
     QObject::connect(&d, &Downloader::download_progress, [&d](int cur_byte, int last_byte) {
         int temp_time = time(0);
         static int cur_time = temp_time;
