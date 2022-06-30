@@ -6,3 +6,4 @@ Downloader_Ver2/core/build/ffmpeg.exe
 *.mp4
 *.idx
 *.o
+build-Downloader-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/ffmpeg.exe

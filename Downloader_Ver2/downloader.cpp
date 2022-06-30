@@ -248,7 +248,10 @@ void Downloader::download()
         {
             emit finish(1);
             QFile file(this->_file_name + ".tmp");
-            file.rename(this->_file_name + ".mp4");
+            QStringList args;
+            args << "-i" << this->_file_name + ".tmp" << "-c" << "copy" << this->_file_name + ".mp4";
+            QProcess::execute("ffmpeg", args);
+            QFile::remove(this->_file_name + ".tmp");
             QFile log_file(this->_file_name + ".log");
             log_file.setPermissions(QFileDevice::WriteUser | QFileDevice::ReadUser | QFileDevice::ExeUser);
             log_file.remove();
