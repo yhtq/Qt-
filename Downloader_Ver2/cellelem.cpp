@@ -1,7 +1,7 @@
 #include "cellelem.h"
 #include "QDebug"
 extern QFutureSynchronizer<void> sync;
-CellElem::CellElem(const QString &taskName, const QString &url, const QString &path, QListWidgetItem *item, QWidget *parent)
+CellElem::CellElem(const QString &taskName, Downloader &d, QListWidgetItem *item, QWidget *parent)
     : QWidget{parent},
       m_taskName(taskName)
 {
@@ -32,8 +32,8 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
     ele_progress_bar -> setGeometry(470, 15, 220, 35);
 
     // do the download work here.
-    auto d_p =  new Downloader("1oL4y1K7My", ".");
-    auto& d = *d_p;
+    //auto d_p =  new Downloader(url, path);
+    //auto& d = *d_p;
     d.select_page("742385024");
     d.get_accept_quality();
     auto result = d.download_prepare("16");
@@ -60,7 +60,9 @@ CellElem::CellElem(const QString &taskName, const QString &url, const QString &p
     bool valid;
     QFuture<void>& future = d.start_download(valid);
     sync.addFuture(future);
-    QObject::connect(d_p, &Downloader::finish, [d_p]{d_p->deleteLater();});
+    //QObject::connect(d_p, &Downloader::finish, [d_p]{d_p->deleteLater();});
+
+    connect(&d,&Downloader::finish,this,&CellElem::finished);
     //d_p->deleteLater();
     //future.waitForFinished();
 }

@@ -8,7 +8,7 @@
 #include <QComboBox>
 #include <QFileDialog>
 
-DownloadDialog2::DownloadDialog2(QWidget *parent) :
+DownloadDialog2::DownloadDialog2(QVector<QString> qualities, QString default_path, QWidget *parent) :
     QDialog(parent)
 {
     this->setWindowTitle("下载");
@@ -32,6 +32,10 @@ DownloadDialog2::DownloadDialog2(QWidget *parent) :
     qnComboBox = new QComboBox;
     qnComboBox->setFocusPolicy(Qt::NoFocus);
     qnComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+
+    for(int i=0; i<qualities.size(); i++)
+        qnComboBox->addItem(qualities[i]);
+
     auto qnTipLabel = new QLabel;
     auto infoIcon = style()->standardIcon(QStyle::SP_MessageBoxInformation);
     qnTipLabel->setPixmap(infoIcon.pixmap(16, 16));
@@ -68,7 +72,7 @@ DownloadDialog2::DownloadDialog2(QWidget *parent) :
 
     pathLabel = new QLabel(this);
     auto appDir = QDir{QCoreApplication::applicationDirPath()};
-    pathLabel->setText(appDir.absoluteFilePath("Downloads"));
+    pathLabel->setText(default_path);
     QPushButton *selPathButton = new QPushButton(this);
     selPathButton->setToolTip("选择文件夹");
     selPathButton->setIconSize(QSize(20, 20));

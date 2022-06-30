@@ -41,7 +41,8 @@ QMap<QString, QString> Downloader::get_page_info()
     for (auto i : _data)
     {
         QJsonObject _i = i.toObject();
-        map[_i["cid"].toString()] = _i["part"].toString();
+        int _cid = _i["cid"].toDouble();
+        map[QString::number(_cid)] = _i["part"].toString();
     }
     return map;
 

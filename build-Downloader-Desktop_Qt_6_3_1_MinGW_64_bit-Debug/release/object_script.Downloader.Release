@@ -9,9 +9,13 @@ release/main.o
 release/mainwidget.o
 release/toolwidget.o
 release/progressbar.o
+release/downloaddialog1.o
+release/downloaddialog2.o
 release/qrc_Resourse.o
 release/moc_cellelem.o
 release/moc_downloader.o
 release/moc_mainwidget.o
 release/moc_toolwidget.o
 release/moc_progressbar.o
+release/moc_downloaddialog1.o
+release/moc_downloaddialog2.o

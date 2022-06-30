@@ -8,6 +8,8 @@ MainWidget::MainWidget(QWidget *parent)
     ui->setupUi(this);
     setAttribute(Qt::WA_StyledBackground,true);
 
+    default_path = "C:/Users/Xungan/Desktop/新建文件夹";
+
     Init_Widget();
     Init_Top();
     Init_SideBar();
@@ -21,6 +23,7 @@ MainWidget::MainWidget(QWidget *parent)
     divider->setGeometry(1,31,1078,1);
     divider->setStyleSheet("background:rgb(245,245,245)");
     menu_state = 0;
+
 }
 
 MainWidget::~MainWidget()
@@ -262,23 +265,98 @@ void MainWidget::Init_ChildWidget1()
                              "QPushButton:pressed{background: rgb(225, 225, 225);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png);border:1px solid rgb(225,225,225)}");
     connect(down_load, &QToolButton::clicked, this, [=]{
         QString url = search_bar -> line_edit ->text();
-        QString path = QFileDialog::getExistingDirectory(this, "选择保存位置", ".");
-        if (path.isEmpty()) {
-            QMessageBox::warning(this, "提示", "请选择下载文件保存位置！");
-            return ;
+//        QString path = QFileDialog::getExistingDirectory(this, "选择保存位置", ".");
+//        if (path.isEmpty()) {
+//            QMessageBox::warning(this, "提示", "请选择下载文件保存位置！");
+//            return ;
+//        }
+
+        QString path = default_path;
+        url = "1oL4y1K7My";
+
+        auto d_p =  new Downloader(url, path);
+        auto& d = *d_p;
+        //d.select_page("742385024");
+
+        QMap<QString, QString> info_video = d.get_video_info();
+        QMap<QString, QString> info_page = d.get_page_info();
+
+        //这是按顺序的嘛
+        QList<QString> allKeys = info_page.keys();
+        qDebug() << allKeys.size();
+        QList<QString> allValues = info_page.values();
+        qDebug() << allValues.size();
+
+        QStringList pages;
+        QMap<QString, QString> map;
+        for(int i=0; i < info_page.size(); i++)
+        {
+            qDebug() << allValues[i];
+            qDebug() << info_page.key(allValues[i]);
+            pages << allValues[i];
+            map[allValues[i]] = allKeys[i];
         }
 
-        QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
-        QWidget *box = new QWidget;
-        box->resize(800,70);
-        CellElem *ele = new CellElem("task name", url, path, item, downloadCell);
-        ele->setParent(box);
-        QWidget *blank = new QWidget(box);
-        blank->setGeometry(775,0,30,70);
-        blank->setStyleSheet("background:rgb(255,255,255)");
+        QString prepare_result;
 
-        item -> setSizeHint(QSize(752, 70));
-        downloadCell -> setItemWidget(item, box);
+        if(info_page.size() > 1)
+        {
+            DownloadDialog1 *dialog1 = new DownloadDialog1(pages,this);
+            int dialog1_result = dialog1->exec();
+
+            if(dialog1_result == DownloadDialog1::Accepted)
+            {
+                QVector<QString> info_quality = d.get_accept_quality();
+                //qDebug() << info_quality.size();
+
+                DownloadDialog2 *dialog2 = new DownloadDialog2(info_quality, default_path, this);
+                dialog2->exec();
+            }
+        }
+        else
+        {
+            d.select_page(allKeys[0]);
+            qDebug() << allKeys[0];
+
+            QVector<QString> info_quality = d.get_accept_quality();
+            qDebug() << info_quality.size();
+
+            DownloadDialog2 *dialog2 = new DownloadDialog2(info_quality, default_path, this);
+            dialog2->exec();
+
+            prepare_result = d.download_prepare(info_quality[0]);
+        }
+
+        qDebug() << prepare_result;
+        //prepare_result = "视频已存在";
+
+        if(prepare_result == "准备下载")
+        {
+            QListWidgetItem *item = new QListWidgetItem(downloadCell, 0);
+            QWidget *box = new QWidget;
+            box->resize(800,70);
+            CellElem *ele = new CellElem("task name", d, item, downloadCell);
+            ele->setParent(box);
+            QWidget *blank = new QWidget(box);
+            blank->setGeometry(775,0,30,70);
+            blank->setStyleSheet("background:rgb(255,255,255)");
+
+            item -> setSizeHint(QSize(752, 70));
+            downloadCell -> setItemWidget(item, box);
+
+            connect(ele,&CellElem::finished,downloadCell,[=]{
+                downloadCell->removeItemWidget(item);
+            });
+        }
+        else
+        {
+            //缺少文字居中
+            QMessageBox *warning = new QMessageBox(QMessageBox::NoIcon, "下载错误", prepare_result);
+            warning->setStyleSheet("QLabel{min-width: 110px;min-height: 50px}");
+            warning->exec();
+        }
+
+        QObject::connect(d_p, &Downloader::finish, [d_p]{d_p->deleteLater();});
     });
 }
 
