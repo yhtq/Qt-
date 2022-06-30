@@ -8,7 +8,11 @@ MainWidget::MainWidget(QWidget *parent)
     ui->setupUi(this);
     setAttribute(Qt::WA_StyledBackground,true);
 
-    default_path = "C:/Users/Xungan/Desktop/新建文件夹";
+    QDir dir;
+    QString userName = dir.home().dirName();
+    default_path = "C:/Users/";
+    default_path.append(userName);
+    default_path.append("/Desktop");
 
     Init_Widget();
     Init_Top();
@@ -236,6 +240,46 @@ void MainWidget::Init_SideBar()
             sideBar->show();
         }
     });
+
+    //设置框
+    connect(btn_set, &ToolWidget::Widget_mouseReleased, [=]{
+        QDialog *setting_dialog = new QDialog(this);
+        setting_dialog->resize(550,300);
+        setting_dialog->setWindowTitle("Setting");
+        setting_dialog->setStyleSheet("background:rgb(255,255,255)");
+        setting_dialog->deleteLater();
+        QLineEdit *path_edit = new QLineEdit(setting_dialog);
+        path_edit->setGeometry(80,30,300,30);
+        path_edit->setPlaceholderText(default_path);
+        path_edit->setStyleSheet("position: absolute;color: rgb(140, 140, 140);"
+                                 "font-family: 微软雅黑;font-size: 14px;font-weight: 450;"
+                                 "line-height: 20px;text-align: left");
+
+        QPushButton *get_path = new QPushButton(setting_dialog);
+        get_path->setGeometry(380,30,60,30);
+        get_path->setText(QString("File"));
+        get_path->setStyleSheet("QPushButton{background: rgb(245, 245, 245);border-radius: 0px;border:1px solid rgb(205,205,205)}"
+                                "QPushButton:hover{background: rgb(235, 235, 235)}"
+                                "QPushButton:pressed{background: rgb(225, 225, 225);border:1px solid rgb(225,225,225)}");
+        connect(get_path, &QPushButton::clicked, [=]{
+            auto path = QFileDialog::getExistingDirectory(this, QString(), path_edit->text());
+            if (!path.isNull()) {
+                path_edit->setText(QDir::toNativeSeparators(path));
+            }
+        });
+
+        QPushButton *save = new QPushButton(setting_dialog);
+        save->setGeometry(440,30,60,30);
+        save->setText(QString("Save"));
+        save->setStyleSheet("QPushButton{background: rgb(245, 245, 245);border-radius: 0px;border:1px solid rgb(205,205,205)}"
+                            "QPushButton:hover{background: rgb(235, 235, 235)}"
+                            "QPushButton:pressed{background: rgb(225, 225, 225);border:1px solid rgb(225,225,225)}");
+        connect(save, &QPushButton::clicked, [=]{
+            default_path = path_edit->text();
+        });
+        setting_dialog->show();
+        setting_dialog->exec();
+    });
 }
 
 void MainWidget::Init_ChildWidget1()
@@ -265,12 +309,6 @@ void MainWidget::Init_ChildWidget1()
                              "QPushButton:pressed{background: rgb(225, 225, 225);background-image:url(:/Icon/MainWidget/ChildWidget1/SearchBar/download.png);border:1px solid rgb(225,225,225)}");
     connect(down_load, &QToolButton::clicked, this, [=]{
         QString url = search_bar -> line_edit ->text();
-//        QString path = QFileDialog::getExistingDirectory(this, "选择保存位置", ".");
-//        if (path.isEmpty()) {
-//            QMessageBox::warning(this, "提示", "请选择下载文件保存位置！");
-//            return ;
-//        }
-
         QString path = default_path;
         //url = "1oL4y1K7My";
         url = "1ns411D7W1";
@@ -300,7 +338,6 @@ void MainWidget::Init_ChildWidget1()
 
         QString prepare_result;
 
-
         int dialog1_result, dialog2_result;
         if(info_page.size() > 1)
         {
@@ -318,7 +355,7 @@ void MainWidget::Init_ChildWidget1()
                     qDebug() << download_page;
                     d.select_page(info_page.key(download_page));
 
-                    QVector<QString> info_quality = d.get_accept_quality();
+                    QMap<QString,QString> info_quality = d.get_accept_quality();
                     //qDebug() << info_quality.size();
 
                     DownloadDialog2 *dialog2 = new DownloadDialog2(info_quality, default_path, this);
@@ -328,7 +365,7 @@ void MainWidget::Init_ChildWidget1()
                     {
                         QString download_quality = dialog2->Get_Choose_Quality();
                         qDebug() << download_quality;
-                        prepare_result = d.download_prepare(download_quality);
+                        prepare_result = d.download_prepare(info_quality.key(download_quality));
 
                         qDebug() << prepare_result;
                         //prepare_result = "视频已存在";
@@ -371,8 +408,8 @@ void MainWidget::Init_ChildWidget1()
             d.select_page(allKeys[0]);
             qDebug() << allKeys[0];
 
-            QVector<QString> info_quality = d.get_accept_quality();
-            qDebug() << info_quality.size();
+            QMap<QString,QString> info_quality = d.get_accept_quality();
+            //qDebug() << info_quality.size();
 
             DownloadDialog2 *dialog2 = new DownloadDialog2(info_quality, default_path, this);
             dialog2_result = dialog2->exec();
@@ -381,7 +418,7 @@ void MainWidget::Init_ChildWidget1()
             {
                 QString download_quality = dialog2->Get_Choose_Quality();
                 qDebug() << download_quality;
-                prepare_result = d.download_prepare(download_quality);
+                prepare_result = d.download_prepare(info_quality.key(download_quality));
 
                 qDebug() << prepare_result;
                 //prepare_result = "视频已存在";
@@ -461,6 +498,13 @@ void MainWidget::Init_ChildWidget2()
     childWidget2 = new QWidget(this);
     childWidget2->setGeometry(256,70,802,506);
     childWidget2->setStyleSheet("background:rgb(230,230,230)");
+
+    QLabel *text = new QLabel(childWidget2);
+    text->setGeometry(320,150,200,100);
+    text->setText(QString("功能暂未开放"));
+    text->setStyleSheet("position: absolute;color: rgb(100, 100, 100);"
+                        "font-family: 微软雅黑;font-size: 30px;font-weight: 400;"
+                        "line-height: 20px;text-align: left");
 }
 
 void MainWidget::onCustomContextMenuRequested(QPoint pos) {

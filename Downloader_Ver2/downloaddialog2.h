@@ -14,7 +14,7 @@ class DownloadDialog2 : public QDialog
     QLabel *pathLabel;
     QComboBox *qnComboBox;
 public:
-    DownloadDialog2(QVector<QString> qualities, QString default_path, QWidget *parent = nullptr);
+    DownloadDialog2(QMap<QString, QString> qualities, QString default_path, QWidget *parent = nullptr);
 
     QString Get_Choose_Quality();
 

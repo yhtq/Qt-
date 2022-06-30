@@ -24,6 +24,7 @@
 #include "QMap"
 #include "downloaddialog1.h"
 #include "downloaddialog2.h"
+#include "QDir"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }

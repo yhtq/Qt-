@@ -8,7 +8,7 @@
 #include <QComboBox>
 #include <QFileDialog>
 
-DownloadDialog2::DownloadDialog2(QVector<QString> qualities, QString default_path, QWidget *parent) :
+DownloadDialog2::DownloadDialog2(QMap<QString, QString> qualities, QString default_path, QWidget *parent) :
     QDialog(parent)
 {
     this->setWindowTitle("下载");
@@ -33,8 +33,10 @@ DownloadDialog2::DownloadDialog2(QVector<QString> qualities, QString default_pat
     qnComboBox->setFocusPolicy(Qt::NoFocus);
     qnComboBox->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 
-    for(int i=0; i<qualities.size(); i++)
-        qnComboBox->addItem(qualities[i]);
+    QList<QString> allValues = qualities.values();
+
+    for(int i=0; i<allValues.size(); i++)
+        qnComboBox->addItem(allValues[i]);
 
     auto qnTipLabel = new QLabel;
     auto infoIcon = style()->standardIcon(QStyle::SP_MessageBoxInformation);
