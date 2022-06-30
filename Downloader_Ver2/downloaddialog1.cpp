@@ -9,10 +9,11 @@ DownloadDialog1::DownloadDialog1(QStringList parts, QWidget *parent) :
     this->setWindowIcon(QIcon(":/Icon/logo.png"));
     partList = new QListWidget(this);
     partList->setGeometry(20, 20, 360, 280);
+    partList->setSelectionMode(QAbstractItemView::SingleSelection);
 
     for (auto part : parts) {
         QListWidgetItem *listItem = new QListWidgetItem(part);
-        listItem->setCheckState(Qt::Unchecked);
+        //listItem->setCheckState(Qt::Unchecked);
         partList->addItem(listItem);
     }
 
